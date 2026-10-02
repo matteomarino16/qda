@@ -1,0 +1,614 @@
+/* ==========================================================================
+   QUELLI DELL'ALBA – ROAD RUNNERS
+   script.js – JavaScript vanilla per index.html e galleria.html
+
+   INDICE
+   1. Navbar scroll
+   1b. Logo volante (hero → header)
+   2. Hamburger menu
+   3. Smooth scrolling
+   4. Link attivo in navbar (scrollspy)
+   5. Animazioni allo scroll (IntersectionObserver)
+   6. Contatori statistiche
+   7. Immagini mancanti → placeholder
+   8. Filtri galleria
+   9. Lightbox
+   10. Google Maps placeholder
+   11. Form contatti
+   12. Piccole interazioni UI (back to top, anno footer, link non ancora attivi)
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    'use strict';
+
+    const header = document.getElementById('site-header');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+    /* ----------------------------------------------------------------------
+       1. NAVBAR SCROLL
+       ---------------------------------------------------------------------- */
+    const backToTop = document.querySelector('.back-to-top');
+
+    const onScroll = () => {
+        const y = window.scrollY;
+        header?.classList.toggle('is-scrolled', y > 40);
+        backToTop?.classList.toggle('is-visible', y > window.innerHeight * 0.8);
+    };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+
+    /* ----------------------------------------------------------------------
+       1b. LOGO VOLANTE (solo home)
+       Il logo parte grande sopra .hero__visual e, mentre si scorre, viene
+       traslato e scalato fino alla posizione di .nav__logo nell'header.
+       L'animazione segue lo scroll: tornando su il logo torna grande.
+       ---------------------------------------------------------------------- */
+    const flyLogo = document.querySelector('.flying-logo');
+    const heroSlot = document.querySelector('.hero__visual');
+    const navSlot = document.querySelector('.nav__logo');
+    const heroSection = document.getElementById('hero');
+
+    if (flyLogo && heroSlot && navSlot && heroSection) {
+        let startSize = 0;
+        let docked = false;
+        let rafId = null;
+        let settleUntil = 0;
+
+        const lerp = (a, b, t) => a + (b - a) * t;
+        const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+        // Dimensione "grande" = dimensione del segnaposto nella hero
+        const measure = () => {
+            startSize = heroSlot.offsetWidth;
+            flyLogo.style.setProperty('--fly-size', `${startSize || navSlot.offsetWidth}px`);
+        };
+
+        const update = () => {
+            const nav = navSlot.getBoundingClientRect();
+
+            // Segnaposto nascosto (es. smartphone in orizzontale): logo subito nell'header
+            if (!startSize) {
+                flyLogo.style.setProperty('--fly-size', `${nav.width}px`);
+                flyLogo.style.setProperty('--p', 1);
+                flyLogo.style.transform = `translate3d(${nav.left}px, ${nav.top}px, 0)`;
+                return;
+            }
+
+            const hero = heroSlot.getBoundingClientRect();
+            // Il logo arriva nell'header dopo circa metà dell'altezza della hero
+            const distance = Math.max(1, heroSection.offsetHeight * 0.5);
+            const raw = Math.min(Math.max(window.scrollY / distance, 0), 1);
+            const p = easeInOut(raw);
+
+            const x = lerp(hero.left, nav.left, p);
+            const y = lerp(hero.top, nav.top, p);
+            const scale = lerp(1, nav.width / startSize, p);
+
+            flyLogo.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
+            flyLogo.style.setProperty('--p', p.toFixed(3));
+
+            // Piccolo rimbalzo all'arrivo nell'header
+            const isDocked = raw >= 1;
+            if (isDocked !== docked) {
+                docked = isDocked;
+                flyLogo.classList.toggle('is-docked', docked && !prefersReducedMotion);
+            }
+        };
+
+        // Durante lo scroll (e per un attimo dopo, mentre l'header cambia
+        // padding con la sua transizione) aggiorna a ogni frame
+        const loop = () => {
+            update();
+            rafId = performance.now() < settleUntil ? requestAnimationFrame(loop) : null;
+        };
+
+        const kick = () => {
+            settleUntil = performance.now() + 600;
+            if (!rafId) rafId = requestAnimationFrame(loop);
+        };
+
+        measure();
+        update();
+        window.addEventListener('scroll', kick, { passive: true });
+        window.addEventListener('resize', () => { measure(); kick(); });
+        window.addEventListener('load', () => { measure(); kick(); });
+    }
+
+
+    /* ----------------------------------------------------------------------
+       2. HAMBURGER MENU (accessibile: aria-expanded, ESC, focus)
+       ---------------------------------------------------------------------- */
+    const toggle = document.querySelector('.nav__toggle');
+    const menu = document.getElementById('nav-menu');
+    const desktopQuery = window.matchMedia('(min-width: 1024px)');
+
+    const setMenu = (open) => {
+        if (!toggle || !menu) return;
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Chiudi il menu' : 'Apri il menu');
+        menu.classList.toggle('is-open', open);
+        header.classList.toggle('nav-open', open);
+        document.body.classList.toggle('no-scroll', open);
+        if (open) {
+            menu.querySelector('a')?.focus();
+        }
+    };
+
+    toggle?.addEventListener('click', () => {
+        setMenu(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    // Chiude il menu quando si clicca un link
+    menu?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setMenu(false));
+    });
+
+    // ESC chiude il menu e riporta il focus sul pulsante
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+            setMenu(false);
+            toggle.focus();
+        }
+    });
+
+    // Passando a desktop il menu mobile viene resettato
+    desktopQuery.addEventListener('change', (e) => {
+        if (e.matches) setMenu(false);
+    });
+
+
+    /* ----------------------------------------------------------------------
+       3. SMOOTH SCROLLING per le ancore interne
+       ---------------------------------------------------------------------- */
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', (e) => {
+            const id = anchor.getAttribute('href');
+            if (id.length < 2) return;
+            const target = document.querySelector(id);
+            if (!target) return;
+
+            e.preventDefault();
+            const offset = header ? header.offsetHeight - 8 : 0;
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+
+            // Sposta il focus per gli utenti da tastiera / screen reader
+            target.setAttribute('tabindex', '-1');
+            target.focus({ preventScroll: true });
+            history.replaceState(null, '', id);
+        });
+    });
+
+
+    /* ----------------------------------------------------------------------
+       4. LINK ATTIVO IN NAVBAR (solo in home)
+       Ogni link indica le sezioni che lo attivano tramite data-section.
+       ---------------------------------------------------------------------- */
+    const spyLinks = document.querySelectorAll('.nav__link[data-section]');
+
+    if (spyLinks.length && 'IntersectionObserver' in window) {
+        const sectionToLink = new Map();
+        spyLinks.forEach((link) => {
+            link.dataset.section.split(' ').forEach((id) => {
+                const section = document.getElementById(id);
+                if (section) sectionToLink.set(section, link);
+            });
+        });
+        // Gli sponsor fanno parte della "Home"
+        const sponsors = document.getElementById('sponsors');
+        if (sponsors) sectionToLink.set(sponsors, spyLinks[0]);
+
+        const spy = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const active = sectionToLink.get(entry.target);
+                spyLinks.forEach((l) => {
+                    l.classList.toggle('is-active', l === active);
+                    if (l === active) l.setAttribute('aria-current', 'location');
+                    else l.removeAttribute('aria-current');
+                });
+            });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+
+        sectionToLink.forEach((_, section) => spy.observe(section));
+    }
+
+
+    /* ----------------------------------------------------------------------
+       5. ANIMAZIONI ALLO SCROLL (IntersectionObserver)
+       ---------------------------------------------------------------------- */
+    const revealEls = document.querySelectorAll('[data-reveal]');
+
+    if ('IntersectionObserver' in window && !prefersReducedMotion) {
+        const revealObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealEls.forEach((el) => revealObserver.observe(el));
+    } else {
+        revealEls.forEach((el) => el.classList.add('is-visible'));
+    }
+
+
+    /* ----------------------------------------------------------------------
+       6. CONTATORI STATISTICHE
+       Animano da 0 al valore di data-count; se vuoto resta il testo (es. "XX").
+       ---------------------------------------------------------------------- */
+    const counters = document.querySelectorAll('[data-count]');
+
+    const animateCounter = (el) => {
+        const target = parseInt(el.dataset.count, 10);
+        if (Number.isNaN(target)) return;
+        const prefix = el.dataset.prefix || '';
+        const format = (n) => prefix + n.toLocaleString('it-IT');
+
+        if (prefersReducedMotion) {
+            el.textContent = format(target);
+            return;
+        }
+
+        const duration = 1600;
+        const start = performance.now();
+        const step = (now) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = format(Math.round(target * eased));
+            if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+    };
+
+    if (counters.length && 'IntersectionObserver' in window) {
+        const counterObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.6 });
+        counters.forEach((c) => counterObserver.observe(c));
+    } else {
+        counters.forEach(animateCounter);
+    }
+
+
+    /* ----------------------------------------------------------------------
+       7. IMMAGINI MANCANTI → PLACEHOLDER
+       Se una foto non esiste ancora (es. immagini/gallery/gallery-gara-01.jpg)
+       il contenitore .media mostra un segnaposto con il nome del file.
+       Basta caricare la foto con quel nome e il segnaposto sparisce.
+       ---------------------------------------------------------------------- */
+    const markMissing = (img) => img.closest('.media')?.classList.add('is-missing');
+
+    document.querySelectorAll('.media img').forEach((img) => {
+        if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) {
+            markMissing(img);
+        } else {
+            img.addEventListener('error', () => markMissing(img), { once: true });
+        }
+    });
+
+
+    /* ----------------------------------------------------------------------
+       8. FILTRI GALLERIA (galleria.html)
+       ---------------------------------------------------------------------- */
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const masonry = document.querySelector('.masonry');
+
+    if (filterButtons.length && masonry) {
+        const items = [...masonry.querySelectorAll('.gallery-item')];
+        const emptyMsg = document.querySelector('.gallery-empty');
+        const status = document.getElementById('filter-status');
+
+        // Numero di foto per categoria accanto a ogni filtro
+        document.querySelectorAll('[data-count-for]').forEach((badge) => {
+            const cat = badge.dataset.countFor;
+            badge.textContent = cat === 'all'
+                ? items.length
+                : items.filter((i) => i.dataset.category === cat).length;
+        });
+
+        // Filtro iniziale da URL (es. galleria.html#gare)
+        const initial = location.hash.replace('#', '');
+
+        const applyFilter = (filter) => {
+            filterButtons.forEach((btn) => {
+                btn.setAttribute('aria-pressed', String(btn.dataset.filter === filter));
+            });
+
+            let visible = 0;
+            items.forEach((item) => {
+                const show = filter === 'all' || item.dataset.category === filter;
+                if (show) {
+                    visible++;
+                    item.classList.remove('is-hidden');
+                    // doppio rAF: permette alla transizione di partire dopo il display
+                    requestAnimationFrame(() => requestAnimationFrame(() => item.classList.remove('is-hiding')));
+                } else {
+                    item.classList.add('is-hiding');
+                    setTimeout(() => {
+                        if (item.classList.contains('is-hiding')) item.classList.add('is-hidden');
+                    }, prefersReducedMotion ? 0 : 350);
+                }
+            });
+
+            if (emptyMsg) emptyMsg.hidden = visible > 0;
+            if (status) status.textContent = `${visible} foto visualizzate`;
+        };
+
+        filterButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                applyFilter(btn.dataset.filter);
+                history.replaceState(null, '', btn.dataset.filter === 'all' ? location.pathname : `#${btn.dataset.filter}`);
+            });
+        });
+
+        if ([...filterButtons].some((b) => b.dataset.filter === initial)) {
+            applyFilter(initial);
+        }
+    }
+
+
+    /* ----------------------------------------------------------------------
+       9. LIGHTBOX
+       Funziona su ogni contenitore [data-lightbox-group] (home e galleria).
+       Considera solo le foto visibili (rispetta il filtro attivo).
+       ---------------------------------------------------------------------- */
+    const lightbox = document.getElementById('lightbox');
+
+    if (lightbox) {
+        const lbImg = lightbox.querySelector('.lightbox__img');
+        const lbPlaceholder = lightbox.querySelector('.lightbox__placeholder');
+        const lbText = lightbox.querySelector('.lightbox__text');
+        const lbCounter = lightbox.querySelector('.lightbox__counter');
+        const btnClose = lightbox.querySelector('.lightbox__close');
+        const btnPrev = lightbox.querySelector('.lightbox__prev');
+        const btnNext = lightbox.querySelector('.lightbox__next');
+
+        let group = [];
+        let index = 0;
+        let lastFocused = null;
+
+        const visibleItems = (container) =>
+            [...container.querySelectorAll('.gallery-item')].filter(
+                (i) => !i.classList.contains('is-hidden') && !i.classList.contains('is-hiding')
+            );
+
+        const render = () => {
+            const item = group[index];
+            const img = item.querySelector('img');
+            const missing = item.classList.contains('is-missing');
+
+            lbCounter.textContent = `${index + 1} / ${group.length}`;
+            lbText.textContent = img.alt;
+
+            if (missing) {
+                lbImg.hidden = true;
+                lbPlaceholder.hidden = false;
+                lbPlaceholder.textContent = `📷 Foto in arrivo – ${item.dataset.placeholder || ''}`;
+            } else {
+                lbPlaceholder.hidden = true;
+                lbImg.hidden = false;
+                lbImg.classList.add('is-loading');
+                lbImg.onload = () => lbImg.classList.remove('is-loading');
+                lbImg.src = img.currentSrc || img.src;
+                lbImg.alt = img.alt;
+            }
+
+            const single = group.length < 2;
+            btnPrev.hidden = single;
+            btnNext.hidden = single;
+        };
+
+        const open = (container, item) => {
+            group = visibleItems(container);
+            index = Math.max(0, group.indexOf(item));
+            lastFocused = document.activeElement;
+            render();
+            lightbox.classList.add('is-open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('no-scroll');
+            btnClose.focus();
+        };
+
+        const close = () => {
+            lightbox.classList.remove('is-open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('no-scroll');
+            lastFocused?.focus();
+        };
+
+        const go = (dir) => {
+            index = (index + dir + group.length) % group.length;
+            render();
+        };
+
+        document.querySelectorAll('[data-lightbox-group]').forEach((container) => {
+            container.addEventListener('click', (e) => {
+                const item = e.target.closest('.gallery-item');
+                if (item) open(container, item);
+            });
+        });
+
+        btnClose.addEventListener('click', close);
+        btnPrev.addEventListener('click', () => go(-1));
+        btnNext.addEventListener('click', () => go(1));
+
+        // Chiusura cliccando fuori dall'immagine
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.classList.contains('lightbox__figure')) close();
+        });
+
+        // Tastiera: ESC, frecce, focus trap con TAB
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('is-open')) return;
+
+            if (e.key === 'Escape') close();
+            else if (e.key === 'ArrowLeft') go(-1);
+            else if (e.key === 'ArrowRight') go(1);
+            else if (e.key === 'Tab') {
+                const focusables = [btnClose, btnPrev, btnNext].filter((b) => !b.hidden);
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
+        });
+
+        // Swipe su mobile
+        let touchX = null;
+        lightbox.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+        lightbox.addEventListener('touchend', (e) => {
+            if (touchX === null) return;
+            const dx = e.changedTouches[0].clientX - touchX;
+            if (Math.abs(dx) > 50 && group.length > 1) go(dx > 0 ? -1 : 1);
+            touchX = null;
+        });
+    }
+
+
+    /* ----------------------------------------------------------------------
+       10. GOOGLE MAPS PLACEHOLDER
+       Finché in index.html l'iframe ha src="[INSERIRE GOOGLE MAPS URL]"
+       viene mostrato un riquadro segnaposto.
+       ---------------------------------------------------------------------- */
+    document.querySelectorAll('.map iframe').forEach((iframe) => {
+        const src = iframe.getAttribute('src') || '';
+        if (src.startsWith('http')) return;
+
+        const placeholder = document.createElement('div');
+        placeholder.className = 'map__placeholder';
+        placeholder.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <strong>Mappa in arrivo</strong>
+            <span>Inserire l'URL di Google Maps nell'iframe di index.html</span>
+            <code>[INSERIRE GOOGLE MAPS URL]</code>`;
+        iframe.replaceWith(placeholder);
+    });
+
+
+    /* ----------------------------------------------------------------------
+       11. FORM CONTATTI
+       Validazione lato client + messaggio di successo.
+       Per collegare un backend: impostare l'attributo action (PHP/Formspree)
+       oppure data-endpoint (API custom) sul <form>.
+       ---------------------------------------------------------------------- */
+    const form = document.getElementById('contactForm');
+
+    if (form) {
+        const success = document.getElementById('formSuccess');
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        const messages = {
+            nome: 'Inserisci il tuo nome (almeno 2 caratteri).',
+            cognome: 'Inserisci il tuo cognome (almeno 2 caratteri).',
+            email: 'Inserisci un indirizzo email valido.',
+            telefono: 'Inserisci un numero di telefono valido (es. +39 333 1234567).',
+            messaggio: 'Scrivi un messaggio di almeno 10 caratteri.',
+            privacy: 'Per inviare la richiesta devi acconsentire al trattamento dei dati.'
+        };
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+        const validateField = (field) => {
+            const wrapper = field.closest('.form-field');
+            const errorEl = document.getElementById(`${field.id}-error`);
+            let valid = field.checkValidity();
+
+            // Controlli aggiuntivi oltre alla validazione HTML5
+            if (valid && field.type === 'email') valid = emailRegex.test(field.value.trim());
+            if (valid && field.type !== 'checkbox' && field.required) valid = field.value.trim().length >= (field.minLength > 0 ? field.minLength : 1);
+
+            wrapper?.classList.toggle('has-error', !valid);
+            field.setAttribute('aria-invalid', String(!valid));
+            if (errorEl) errorEl.textContent = valid ? '' : messages[field.name] || 'Campo non valido.';
+            return valid;
+        };
+
+        const fields = [...form.querySelectorAll('input, textarea')];
+
+        // Validazione "live" dopo il primo contatto con il campo
+        fields.forEach((field) => {
+            field.addEventListener('blur', () => {
+                if (field.value || field.type === 'checkbox') validateField(field);
+            });
+            field.addEventListener('input', () => {
+                if (field.closest('.form-field')?.classList.contains('has-error')) validateField(field);
+            });
+            field.addEventListener('change', () => {
+                if (field.type === 'checkbox') validateField(field);
+            });
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            success.classList.remove('is-visible');
+
+            const results = fields.map(validateField);
+            const firstInvalid = fields[results.indexOf(false)];
+            if (firstInvalid) {
+                firstInvalid.focus();
+                return;
+            }
+
+            const endpoint = form.dataset.endpoint || (form.getAttribute('action') !== '#' ? form.action : '');
+            submitBtn.classList.add('is-loading');
+            submitBtn.disabled = true;
+
+            try {
+                if (endpoint) {
+                    // Invio reale (Formspree / API / PHP che risponde in JSON)
+                    const response = await fetch(endpoint, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: { Accept: 'application/json' }
+                    });
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                } else {
+                    // Nessun backend configurato: simulazione dell'invio
+                    await new Promise((resolve) => setTimeout(resolve, 900));
+                }
+
+                form.reset();
+                fields.forEach((f) => f.removeAttribute('aria-invalid'));
+                success.classList.add('is-visible');
+                success.focus();
+            } catch (err) {
+                alert('Si è verificato un errore durante l\'invio. Riprova più tardi o scrivici a info@quellidellalba.com');
+            } finally {
+                submitBtn.classList.remove('is-loading');
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
+
+    /* ----------------------------------------------------------------------
+       12. PICCOLE INTERAZIONI UI
+       ---------------------------------------------------------------------- */
+
+    // Anno corrente nel footer
+    document.querySelectorAll('[data-year]').forEach((el) => {
+        el.textContent = new Date().getFullYear();
+    });
+
+    // Link non ancora collegati (href="#" con data-link): evita il salto in cima
+    document.querySelectorAll('a[href="#"]').forEach((link) => {
+        link.addEventListener('click', (e) => e.preventDefault());
+        link.setAttribute('title', 'Link in arrivo');
+    });
+});

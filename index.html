@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quelli dell'Alba – Road Runners | Running Team</title>
+    <meta name="description" content="Quelli dell'Alba – Road Runners: squadra di running, gare, eventi e passione per la corsa.">
+    <meta name="theme-color" content="#26004d">
+    <link rel="canonical" href="https://www.quellidellalba.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:site_name" content="Quelli dell'Alba – Road Runners">
+    <meta property="og:title" content="Quelli dell'Alba – Road Runners | Running Team">
+    <meta property="og:description" content="Quelli dell'Alba – Road Runners: squadra di running, gare, eventi e passione per la corsa.">
+    <meta property="og:url" content="https://www.quellidellalba.com/">
+    <meta property="og:image" content="https://www.quellidellalba.com/immagini/banner.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon (sostituibile con un .ico / .svg dedicato) -->
+    <link rel="icon" type="image/png" href="immagini/favicon.png">
+    <link rel="apple-touch-icon" href="immagini/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..900&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,600..900,0..100,0..1;1,9..144,600..900,0..100,0..1&display=swap" rel="stylesheet">
+
+    <link rel="preload" as="image" href="immagini/sfondo-hero.jpeg">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Schema.org – SportsTeam (completare i campi tra parentesi quadre) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SportsTeam",
+        "name": "Quelli dell'Alba – Road Runners",
+        "alternateName": "Quelli dell'Alba",
+        "sport": "Running",
+        "url": "https://www.quellidellalba.com/",
+        "logo": "https://www.quellidellalba.com/immagini/logo.png",
+        "image": "https://www.quellidellalba.com/immagini/banner.jpg",
+        "description": "Squadra di running, gare, eventi e passione per la corsa.",
+        "email": "info@quellidellalba.com",
+        "telephone": "[INSERIRE TELEFONO]",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "[INSERIRE INDIRIZZO]",
+            "addressLocality": "[INSERIRE CITTÀ]",
+            "addressCountry": "IT"
+        },
+        "sameAs": [
+            "[INSERIRE URL INSTAGRAM]",
+            "[INSERIRE URL FACEBOOK]"
+        ]
+    }
+    </script>
+
+    <!-- Attiva le animazioni solo se JavaScript è disponibile -->
+    <script>document.documentElement.classList.add('js');</script>
+    <script src="script.js" defer></script>
+</head>
+<body class="has-flying-logo">
+
+    <a class="skip-link" href="#main">Vai al contenuto</a>
+
+    <!-- ===================== HEADER / NAVBAR ===================== -->
+    <header class="site-header" id="site-header">
+        <nav class="nav container" aria-label="Navigazione principale">
+            <a class="nav__brand" href="index.html" aria-label="Quelli dell'Alba – Road Runners, torna alla home">
+                <img class="nav__logo" src="immagini/logo.png" alt="" width="52" height="52">
+                <span class="nav__name">
+                    Quelli dell'Alba
+                    <small>Road Runners</small>
+                </span>
+            </a>
+
+            <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Apri il menu">
+                <span class="nav__toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+            </button>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a class="nav__link is-active" href="#hero" data-section="hero">Home</a></li>
+                    <li><a class="nav__link" href="#chi-siamo" data-section="chi-siamo">Chi siamo</a></li>
+                    <li><a class="nav__link" href="#vignaletto" data-section="vignaletto da-zero-a-dieci">Gare</a></li>
+                    <li><a class="nav__link" href="galleria.html">Galleria</a></li>
+                    <li><a class="nav__link" href="#contact-info" data-section="contact-info contact-form">Contatti</a></li>
+                </ul>
+                <a class="btn btn--primary nav__cta" href="#contact-form">Unisciti a noi</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Logo "volante": grande nella hero, durante lo scroll si rimpicciolisce
+         e si posiziona nell'header (gestito da script.js, sezione 1b) -->
+    <div class="flying-logo" aria-hidden="true">
+        <div class="flying-logo__inner">
+            <img src="immagini/logo.png" alt="" width="900" height="900" fetchpriority="high">
+        </div>
+    </div>
+
+    <main id="main">
+
+        <!-- ===================== HERO ===================== -->
+        <section id="hero" aria-labelledby="hero-title">
+            <div class="hero__bg" aria-hidden="true">
+                <!-- Sostituire con la foto del team preferita -->
+                <img src="immagini/sfondo-hero.jpeg" alt="" width="1440" height="1585" fetchpriority="high">
+            </div>
+            <div class="hero__overlay" aria-hidden="true"></div>
+            <div class="hero__rays" aria-hidden="true"></div>
+            <span class="hero__shape hero__shape--1" aria-hidden="true"></span>
+            <span class="hero__shape hero__shape--2" aria-hidden="true"></span>
+            <span class="hero__shape hero__shape--3" aria-hidden="true"></span>
+
+            <div class="container hero__inner">
+                <div class="hero__content">
+                    <p class="hero__kicker" data-reveal="fade">Quelli dell'Alba</p>
+                    <h1 class="hero__title" id="hero-title" data-reveal>
+                        Road Runners.
+                        <span>Corri con noi.</span>
+                    </h1>
+                    <p class="hero__subtitle" data-reveal style="--reveal-delay: .1s">
+                        Passione, strada, comunità e quella voglia di esserci prima dell'alba.
+                    </p>
+                    <div class="btn-group hero__actions" data-reveal style="--reveal-delay: .2s">
+                        <a class="btn btn--primary" href="#chi-siamo">
+                            Scopri il team
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </a>
+                        <a class="btn btn--ghost" href="#vignaletto">Le nostre gare</a>
+                    </div>
+                </div>
+
+                <!-- Segnaposto: indica dove e quanto grande appare il logo nella hero.
+                     Il logo vero è .flying-logo (sotto l'header), animato da script.js -->
+                <div class="hero__visual" aria-hidden="true"></div>
+            </div>
+
+            <a class="hero__scroll" href="#sponsors" aria-label="Scorri alla sezione successiva">
+                <span class="hero__scroll-mouse" aria-hidden="true"></span>
+                SCROLL PER SCOPRIRE
+            </a>
+        </section>
+
+        <!-- ===================== SPONSOR ===================== -->
+        <section id="sponsors" aria-labelledby="sponsors-title">
+            <div class="container">
+                <h2 class="sponsors__title" id="sponsors-title">CON IL SUPPORTO DEI NOSTRI PARTNER</h2>
+                <!-- Per cambiare sponsor: sostituire immagine, alt e href -->
+                <ul class="sponsors__list">
+                    <li data-reveal>
+                        <a class="sponsor-card sponsor-card--fill" href="#" target="_blank" rel="noopener" aria-label="Allianz Passoforte Assicurazioni (sito sponsor)">
+                            <img src="immagini/sponsor/sponsor-01-allianz-passoforte.png" alt="Allianz – Passoforte Assicurazioni" width="1200" height="858" loading="lazy">
+                        </a>
+                    </li>
+                    <li data-reveal style="--reveal-delay: .1s">
+                        <a class="sponsor-card" href="#" target="_blank" rel="noopener" aria-label="Domus Medica (sito sponsor)">
+                            <img src="immagini/sponsor/sponsor-02-domus-medica.png" alt="Domus Medica" width="597" height="417" loading="lazy">
+                        </a>
+                    </li>
+                    <li data-reveal style="--reveal-delay: .2s">
+                        <a class="sponsor-card" href="#" target="_blank" rel="noopener" aria-label="Dott. Paolo Solito, biologo nutrizionista (sito sponsor)">
+                            <img src="immagini/sponsor/sponsor-03-paolo-solito.png" alt="Dott. Paolo Solito – Biologo nutrizionista, Centro nutrizionale" width="800" height="594" loading="lazy">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===================== CHI SIAMO ===================== -->
+        <section id="chi-siamo" class="section" aria-labelledby="about-title">
+            <div class="container about">
+                <div class="about__visual" data-reveal="left">
+                    <div class="about__stripe" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <img class="about__logo" src="immagini/logo.png" alt="Logo Quelli dell'Alba – Road Runners" width="900" height="900" loading="lazy">
+                    <div class="about__badge">
+                        <img src="immagini/fidal.png" alt="FIDAL – Federazione Italiana di Atletica Leggera" width="331" height="152" loading="lazy">
+                        <span>Società affiliata</span>
+                    </div>
+                </div>
+
+                <div class="about__content" data-reveal="right">
+                    <p class="eyebrow">Chi siamo</p>
+                    <h2 id="about-title">Non siamo solo una squadra. <em>Siamo una comunità.</em></h2>
+                    <p class="lead">
+                        Quelli dell'Alba – Road Runners nasce dalla passione per la corsa, dalla voglia di condividere chilometri e dalla convinzione che correre insieme renda ogni traguardo più bello.
+                    </p>
+                    <div class="about__text">
+                        <!-- [INSERIRE TESTO DESCRITTIVO DEL TEAM] -->
+                        <p>
+                            Ci ritroviamo quando la città dorme ancora, con le scarpe allacciate e il sole che inizia a colorare la strada. Siamo runner di ogni età e livello: c'è chi prepara la maratona e chi ha appena corso il suo primo chilometro, ma tutti condividiamo lo stesso spirito.
+                        </p>
+                        <p>
+                            Allenamenti di gruppo, gare su strada, trasferte ed eventi organizzati da noi: ogni uscita è un'occasione per migliorarsi, sostenersi a vicenda e vivere il territorio di corsa. [INSERIRE STORIA DEL TEAM, ANNO DI FONDAZIONE E VALORI]
+                        </p>
+                    </div>
+
+                    <!-- Statistiche: modificare data-count con il numero reale (es. data-count="120").
+                         Se data-count è vuoto viene mostrato il testo "XX". -->
+                    <ul class="stats">
+                        <li class="stat">
+                            <span class="stat__value" data-count="" data-prefix="+">XX</span>
+                            <span class="stat__label">Atleti</span>
+                        </li>
+                        <li class="stat">
+                            <span class="stat__value" data-count="">XX</span>
+                            <span class="stat__label">Gare</span>
+                        </li>
+                        <li class="stat">
+                            <span class="stat__value" data-count="">XX</span>
+                            <span class="stat__label">Anni</span>
+                        </li>
+                        <li class="stat">
+                            <span class="stat__value" data-count="">XXXX</span>
+                            <span class="stat__label">Km</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== GARA PRINCIPALE: VIGNALETTO CHALLENGE ===================== -->
+        <section id="vignaletto" class="section race" aria-labelledby="vignaletto-title">
+            <div class="race__stripes" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+            <div class="container race__grid">
+                <div class="race__media" data-reveal="left">
+                    <div class="race__photo media" data-placeholder="immagini/gare/vignaletto-01.jpg">
+                        <!-- Inserire la foto della gara in immagini/gare/vignaletto-01.jpg -->
+                        <img src="immagini/gare/vignaletto-01.jpg" alt="Partenza della Vignaletto Challenge" width="1200" height="1500" loading="lazy">
+                    </div>
+                    <div class="race__logo-badge">
+                        <img src="immagini/vignaletto-logo.png" alt="Logo Vignaletto Challenge" width="504" height="236" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="race__content" data-reveal="right">
+                    <p class="eyebrow">La gara principale</p>
+                    <h2 id="vignaletto-title">Vignaletto Challenge</h2>
+                    <p class="race__tagline">La nostra gara. La nostra strada.</p>
+                    <div class="race__desc">
+                        <!-- [INSERIRE DESCRIZIONE DELLA GARA] -->
+                        <p>
+                            La Vignaletto Challenge è l'appuntamento che organizziamo con il cuore: una gara pensata per chi ama la strada, la fatica condivisa e l'atmosfera di festa che si respira al traguardo.
+                        </p>
+                        <p>
+                            [INSERIRE DETTAGLI: percorso, categorie, ristori, premiazioni, regolamento.]
+                        </p>
+                    </div>
+
+                    <ul class="race__info">
+                        <li class="info-card">
+                            <span class="info-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                            </span>
+                            <span class="info-card__label">Data</span>
+                            <span class="info-card__value">[INSERIRE DATA GARA]</span>
+                        </li>
+                        <li class="info-card">
+                            <span class="info-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+                            </span>
+                            <span class="info-card__label">Distanza</span>
+                            <span class="info-card__value">[INSERIRE KM]</span>
+                        </li>
+                        <li class="info-card">
+                            <span class="info-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                            </span>
+                            <span class="info-card__label">Partenza</span>
+                            <span class="info-card__value">[INSERIRE ORARIO]</span>
+                        </li>
+                        <li class="info-card">
+                            <span class="info-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                            </span>
+                            <span class="info-card__label">Location</span>
+                            <span class="info-card__value">[INSERIRE LOCATION]</span>
+                        </li>
+                    </ul>
+
+                    <div class="btn-group">
+                        <!-- Sostituire href="#" con i link reali -->
+                        <a class="btn btn--primary" href="#" data-link="vignaletto-info">
+                            Scopri la gara
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </a>
+                        <a class="btn btn--ghost" href="#" data-link="vignaletto-iscrizioni">Iscriviti</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SECONDA GARA: DA 0 A 10 KM ===================== -->
+        <section id="da-zero-a-dieci" class="section race race--reverse" aria-labelledby="da0a10-title">
+            <div class="container race__grid">
+                <div class="race__media" data-reveal="right">
+                    <div class="race__photo media" data-placeholder="immagini/gare/da-0-a-10km-01.jpg">
+                        <!-- Inserire la foto in immagini/gare/da-0-a-10km-01.jpg -->
+                        <img src="immagini/gare/da-0-a-10km-01.jpg" alt="Partecipanti alla manifestazione Da 0 a 10 KM" width="1200" height="1500" loading="lazy">
+                    </div>
+                    <div class="race__logo-badge">
+                        <img src="immagini/da0a10-logo.png" alt="Logo Da 0 a 10 – Martina Franca, Quelli dell'Alba Road Runners" width="666" height="330" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="race__content" data-reveal="left">
+                    <p class="eyebrow">L'altra manifestazione</p>
+                    <h2 id="da0a10-title">Da 0 a <span>10 KM</span></h2>
+                    <p class="race__tagline">Dal primo passo al traguardo.</p>
+                    <div class="race__desc">
+                        <!-- [INSERIRE DESCRIZIONE DELLA MANIFESTAZIONE] -->
+                        <p>
+                            Da 0 a 10 KM è la manifestazione pensata per accompagnare chiunque, passo dopo passo, a scoprire la corsa e arrivare a correre i suoi primi 10 chilometri.
+                        </p>
+                        <p>
+                            [INSERIRE DETTAGLI: programma, a chi è rivolta, modalità di partecipazione.]
+                        </p>
+                    </div>
+
+                    <ul class="race__info">
+                        <li class="info-card">
+                            <span class="info-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                            </span>
+                            <span class="info-card__label">Data</span>
+                            <span class="info-card__value">[INSERIRE DATA GARA]</span>
+                        </li>
+                        <li class="info-card">
+                            <span class="info-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19c4 0 4-6 8-6s4-6 8-6"/><circle cx="4" cy="19" r="1.5"/><circle cx="20" cy="7" r="1.5"/></svg>
+                            </span>
+                            <span class="info-card__label">Percorso</span>
+                            <span class="info-card__value">[INSERIRE PERCORSO]</span>
+                        </li>
+                        <li class="info-card">
+                            <span class="info-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                            </span>
+                            <span class="info-card__label">Luogo</span>
+                            <span class="info-card__value">Martina Franca – [INSERIRE LUOGO]</span>
+                        </li>
+                        <li class="info-card">
+                            <span class="info-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+                            </span>
+                            <span class="info-card__label">Distanza</span>
+                            <span class="info-card__value">10 km</span>
+                        </li>
+                    </ul>
+
+                    <div class="btn-group">
+                        <!-- Sostituire href="#" con i link reali -->
+                        <a class="btn btn--teal" href="#" data-link="da0a10-info">
+                            Scopri di più
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </a>
+                        <a class="btn btn--outline" href="#" data-link="da0a10-iscrizioni">Partecipa</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== GALLERIA PREVIEW ===================== -->
+        <section id="gallery-preview" class="section" aria-labelledby="gallery-preview-title">
+            <div class="container">
+                <div class="section-head section-head--center" data-reveal>
+                    <p class="eyebrow">Galleria</p>
+                    <h2 id="gallery-preview-title">Vivi la corsa</h2>
+                    <p>I momenti più belli delle nostre gare, degli allenamenti e della vita di squadra.</p>
+                </div>
+
+                <!-- Click su una foto = lightbox. Le foto mancanti mostrano un segnaposto col nome del file. -->
+                <div class="preview-grid" data-lightbox-group>
+                    <button class="gallery-item media" type="button" data-reveal data-placeholder="immagini/sfondo-hero.jpeg">
+                        <img src="immagini/sfondo-hero.jpeg" alt="Tre atleti del team con la felpa ufficiale prima di una gara" width="1440" height="1585" loading="lazy">
+                        <span class="gallery-item__caption">Team</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-reveal style="--reveal-delay: .05s" data-placeholder="immagini/gallery/gallery-gara-01.jpg">
+                        <img src="immagini/gallery/gallery-gara-01.jpg" alt="Momento di gara" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Gare</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-reveal style="--reveal-delay: .1s" data-placeholder="immagini/gallery/gallery-allenamento-01.jpg">
+                        <img src="immagini/gallery/gallery-allenamento-01.jpg" alt="Allenamento di gruppo all'alba" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Allenamenti</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-reveal style="--reveal-delay: .15s" data-placeholder="immagini/banner.jpg">
+                        <img src="immagini/banner.jpg" alt="Runner in controluce sulla spiaggia al tramonto con il logo del team" width="1441" height="640" loading="lazy">
+                        <span class="gallery-item__caption">Alba</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-reveal style="--reveal-delay: .2s" data-placeholder="immagini/gallery/gallery-evento-01.jpg">
+                        <img src="immagini/gallery/gallery-evento-01.jpg" alt="Evento del team" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Eventi</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-reveal style="--reveal-delay: .25s" data-placeholder="immagini/gallery/gallery-team-01.jpg">
+                        <img src="immagini/gallery/gallery-team-01.jpg" alt="Foto di gruppo del team" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Team</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                </div>
+
+                <div class="preview-cta">
+                    <a class="btn btn--dark" href="galleria.html">
+                        Vedi tutta la galleria
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== CONTATTI + MAPPA ===================== -->
+        <section id="contact-info" class="section" aria-labelledby="contact-title">
+            <div class="container contact">
+                <div class="contact__intro" data-reveal="left">
+                    <p class="eyebrow">Contatti</p>
+                    <h2 id="contact-title">Vieni a correre con noi</h2>
+                    <p>
+                        Che tu sia alle prime uscite o abbia già tanti chilometri nelle gambe, c'è sempre posto nel gruppo. Scrivici o passa a trovarci a uno dei nostri allenamenti.
+                    </p>
+
+                    <ul class="contact-cards">
+                        <li>
+                            <a class="contact-card" href="mailto:info@quellidellalba.com">
+                                <span class="contact-card__icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                                </span>
+                                <span>
+                                    <span class="contact-card__label">Email</span>
+                                    <span class="contact-card__value">info@quellidellalba.com</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <!-- Sostituire href con il numero reale, es. tel:+39XXXXXXXXXX -->
+                            <a class="contact-card" href="tel:+39">
+                                <span class="contact-card__icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>
+                                </span>
+                                <span>
+                                    <span class="contact-card__label">Telefono</span>
+                                    <span class="contact-card__value">+39 XXX XXX XXXX</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="contact-card--wide">
+                            <div class="contact-card">
+                                <span class="contact-card__icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                                </span>
+                                <span>
+                                    <span class="contact-card__label">Location</span>
+                                    <span class="contact-card__value">[INSERIRE INDIRIZZO]</span>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="contact-card--wide">
+                            <div class="contact-card">
+                                <span class="contact-card__icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+                                </span>
+                                <span>
+                                    <span class="contact-card__label">Social</span>
+                                    <span class="socials">
+                                        <!-- Sostituire href con gli URL reali -->
+                                        <a class="social-link" href="#" target="_blank" rel="noopener" aria-label="Instagram di Quelli dell'Alba">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                                            Instagram
+                                        </a>
+                                        <a class="social-link" href="#" target="_blank" rel="noopener" aria-label="Facebook di Quelli dell'Alba">
+                                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 00-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg>
+                                            Facebook
+                                        </a>
+                                    </span>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="map" data-reveal="right">
+                    <!--
+                        GOOGLE MAPS
+                        1. Apri Google Maps e cerca l'indirizzo del team
+                        2. Condividi → Incorpora una mappa → Copia HTML
+                        3. Incolla qui sotto SOLO il valore dell'attributo src
+                           al posto di [INSERIRE GOOGLE MAPS URL]
+                    -->
+                    <iframe
+                        src="[INSERIRE GOOGLE MAPS URL]"
+                        title="Mappa: dove trovare Quelli dell'Alba – Road Runners"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== FORM CONTATTI ===================== -->
+        <section id="contact-form" class="section" aria-labelledby="form-title">
+            <div class="container">
+                <div class="section-head section-head--center" data-reveal>
+                    <p class="eyebrow">Scrivici</p>
+                    <h2 id="form-title">Contattaci</h2>
+                    <p>Vuoi entrare nella squadra o avere informazioni sulle nostre attività?</p>
+                </div>
+
+                <div class="form-card" data-reveal="zoom">
+                    <!--
+                        COLLEGAMENTO BACKEND
+                        - PHP:        action="invia.php" method="POST"
+                        - Formspree:  action="https://formspree.io/f/[ID]" method="POST"
+                        - Netlify:    aggiungere gli attributi  data-netlify="true" name="contatti"
+                        - API custom: impostare data-endpoint="https://..." (vedi script.js)
+                        Finché action/data-endpoint non sono impostati, script.js simula l'invio.
+                    -->
+                    <form id="contactForm" action="#" method="POST" novalidate data-endpoint="">
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label for="nome">Nome <span class="req" aria-hidden="true">*</span></label>
+                                <input type="text" id="nome" name="nome" autocomplete="given-name" required minlength="2" aria-describedby="nome-error">
+                                <span class="form-error" id="nome-error" aria-live="polite"></span>
+                            </div>
+                            <div class="form-field">
+                                <label for="cognome">Cognome <span class="req" aria-hidden="true">*</span></label>
+                                <input type="text" id="cognome" name="cognome" autocomplete="family-name" required minlength="2" aria-describedby="cognome-error">
+                                <span class="form-error" id="cognome-error" aria-live="polite"></span>
+                            </div>
+                            <div class="form-field">
+                                <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+                                <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error">
+                                <span class="form-error" id="email-error" aria-live="polite"></span>
+                            </div>
+                            <div class="form-field">
+                                <label for="telefono">Numero di telefono</label>
+                                <input type="tel" id="telefono" name="telefono" autocomplete="tel" inputmode="tel" pattern="^[+]?[0-9\s\-().]{6,20}$" aria-describedby="telefono-error">
+                                <span class="form-error" id="telefono-error" aria-live="polite"></span>
+                            </div>
+                            <div class="form-field form-field--full">
+                                <label for="messaggio">Messaggio <span class="req" aria-hidden="true">*</span></label>
+                                <textarea id="messaggio" name="messaggio" required minlength="10" aria-describedby="messaggio-error"></textarea>
+                                <span class="form-error" id="messaggio-error" aria-live="polite"></span>
+                            </div>
+                            <div class="form-field form-field--full">
+                                <div class="form-check">
+                                    <input type="checkbox" id="privacy" name="privacy" required aria-describedby="privacy-error">
+                                    <label for="privacy">Acconsento al trattamento dei dati personali. <a href="#" data-link="privacy-policy">Leggi la Privacy Policy</a></label>
+                                </div>
+                                <span class="form-error" id="privacy-error" aria-live="polite"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <small>I campi con <span aria-hidden="true">*</span> sono obbligatori.</small>
+                            <button class="btn btn--primary" type="submit">
+                                Invia richiesta
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                            </button>
+                        </div>
+
+                        <div class="form-success" id="formSuccess" role="status" aria-live="polite" tabindex="-1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+                            <p>Grazie! La tua richiesta è stata inviata. Ti risponderemo il prima possibile… magari dopo l'allenamento dell'alba!</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+        <div class="container footer__grid">
+            <div>
+                <a class="footer__brand" href="index.html">
+                    <img src="immagini/logo.png" alt="" width="76" height="76" loading="lazy">
+                    <span>
+                        <strong>Quelli dell'Alba</strong>
+                        <span>ROAD RUNNERS</span>
+                    </span>
+                </a>
+                <p class="footer__desc">
+                    Squadra di running nata dalla passione per la strada e dalla voglia di condividere ogni chilometro, dall'alba al traguardo.
+                </p>
+            </div>
+
+            <nav aria-label="Link rapidi">
+                <h2 class="footer__title">Link rapidi</h2>
+                <ul class="footer__links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#chi-siamo">Chi siamo</a></li>
+                    <li><a href="#vignaletto">Gare</a></li>
+                    <li><a href="galleria.html">Galleria</a></li>
+                    <li><a href="#contact-info">Contatti</a></li>
+                </ul>
+            </nav>
+
+            <div>
+                <h2 class="footer__title">Contatti</h2>
+                <ul class="footer__links">
+                    <li><a href="mailto:info@quellidellalba.com">info@quellidellalba.com</a></li>
+                    <li><a href="tel:+39">+39 XXX XXX XXXX</a></li>
+                </ul>
+                <div class="footer__social">
+                    <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 00-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer__bottom">
+            <p>© <span data-year>2026</span> Quelli dell'Alba – Road Runners</p>
+            <div class="footer__legal">
+                <a href="#" data-link="privacy-policy">Privacy Policy</a>
+                <a href="#" data-link="cookie-policy">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <a class="back-to-top" href="#main" aria-label="Torna su">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </a>
+
+    <!-- ===================== LIGHTBOX ===================== -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizzatore immagini" aria-hidden="true">
+        <button class="lightbox__btn lightbox__close" type="button" aria-label="Chiudi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <button class="lightbox__btn lightbox__prev" type="button" aria-label="Immagine precedente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <figure class="lightbox__figure">
+            <img class="lightbox__img" src="" alt="">
+            <div class="lightbox__placeholder" hidden></div>
+            <figcaption class="lightbox__caption"><span class="lightbox__counter"></span><span class="lightbox__text"></span></figcaption>
+        </figure>
+        <button class="lightbox__btn lightbox__next" type="button" aria-label="Immagine successiva">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Galleria | Quelli dell'Alba – Road Runners</title>
+    <meta name="description" content="Galleria fotografica di Quelli dell'Alba – Road Runners: gare, allenamenti, team ed eventi.">
+    <meta name="theme-color" content="#26004d">
+    <link rel="canonical" href="https://www.quellidellalba.com/galleria.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:site_name" content="Quelli dell'Alba – Road Runners">
+    <meta property="og:title" content="Galleria | Quelli dell'Alba – Road Runners">
+    <meta property="og:description" content="Quelli dell'Alba – Road Runners: squadra di running, gare, eventi e passione per la corsa.">
+    <meta property="og:url" content="https://www.quellidellalba.com/galleria.html">
+    <meta property="og:image" content="https://www.quellidellalba.com/immagini/banner.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon (sostituibile con un .ico / .svg dedicato) -->
+    <link rel="icon" type="image/png" href="immagini/favicon.png">
+    <link rel="apple-touch-icon" href="immagini/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..900&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,600..900,0..100,0..1;1,9..144,600..900,0..100,0..1&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>document.documentElement.classList.add('js');</script>
+    <script src="script.js" defer></script>
+</head>
+<body class="page-gallery">
+
+    <a class="skip-link" href="#main">Vai al contenuto</a>
+
+    <!-- ===================== HEADER / NAVBAR ===================== -->
+    <header class="site-header" id="site-header">
+        <nav class="nav container" aria-label="Navigazione principale">
+            <a class="nav__brand" href="index.html" aria-label="Quelli dell'Alba – Road Runners, torna alla home">
+                <img class="nav__logo" src="immagini/logo.png" alt="" width="52" height="52">
+                <span class="nav__name">
+                    Quelli dell'Alba
+                    <small>Road Runners</small>
+                </span>
+            </a>
+
+            <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Apri il menu">
+                <span class="nav__toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+            </button>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a class="nav__link" href="index.html">Home</a></li>
+                    <li><a class="nav__link" href="index.html#chi-siamo">Chi siamo</a></li>
+                    <li><a class="nav__link" href="index.html#vignaletto">Gare</a></li>
+                    <li><a class="nav__link" href="galleria.html" aria-current="page">Galleria</a></li>
+                    <li><a class="nav__link" href="index.html#contact-info">Contatti</a></li>
+                </ul>
+                <a class="btn btn--primary nav__cta" href="index.html#contact-form">Unisciti a noi</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+
+        <!-- ===================== HERO GALLERIA ===================== -->
+        <section class="gallery-hero" aria-labelledby="gallery-title">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Percorso">
+                    <a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Galleria</span>
+                </nav>
+                <p class="eyebrow" data-reveal="fade">Quelli dell'Alba</p>
+                <h1 id="gallery-title" data-reveal>Galleria</h1>
+                <p data-reveal style="--reveal-delay: .1s">Corri. Vivi. Condividi.</p>
+            </div>
+        </section>
+
+        <!-- ===================== FILTRI ===================== -->
+        <section class="gallery-filters" aria-label="Filtra le foto per categoria">
+            <div class="container">
+                <div class="filters" role="toolbar" aria-label="Categorie">
+                    <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">TUTTE <span class="filter-btn__count" data-count-for="all"></span></button>
+                    <button class="filter-btn" type="button" data-filter="gare" aria-pressed="false">GARE <span class="filter-btn__count" data-count-for="gare"></span></button>
+                    <button class="filter-btn" type="button" data-filter="allenamenti" aria-pressed="false">ALLENAMENTI <span class="filter-btn__count" data-count-for="allenamenti"></span></button>
+                    <button class="filter-btn" type="button" data-filter="team" aria-pressed="false">TEAM <span class="filter-btn__count" data-count-for="team"></span></button>
+                    <button class="filter-btn" type="button" data-filter="eventi" aria-pressed="false">EVENTI <span class="filter-btn__count" data-count-for="eventi"></span></button>
+                </div>
+                <p class="visually-hidden" id="filter-status" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <!-- ===================== GRIGLIA ===================== -->
+        <!--
+            PER AGGIUNGERE UNA FOTO: copiare un <button class="gallery-item"> e modificare
+            - data-category: gare | allenamenti | team | eventi
+            - src e alt dell'immagine (cartella immagini/gallery/)
+            - data-placeholder: stesso percorso della foto (serve solo come segnaposto)
+        -->
+        <section class="gallery-grid" aria-label="Foto">
+            <div class="container">
+                <div class="masonry" data-lightbox-group>
+                    <button class="gallery-item media" type="button" data-category="team" data-placeholder="immagini/sfondo-hero.jpeg">
+                        <img src="immagini/sfondo-hero.jpeg" alt="Tre atleti del team con la felpa ufficiale prima di una gara" width="1440" height="1585" loading="lazy">
+                        <span class="gallery-item__caption">Team</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="gare" data-placeholder="immagini/gallery/gallery-gara-01.jpg">
+                        <img src="immagini/gallery/gallery-gara-01.jpg" alt="Momento di gara" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Gare</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="allenamenti" data-placeholder="immagini/gallery/gallery-allenamento-01.jpg">
+                        <img src="immagini/gallery/gallery-allenamento-01.jpg" alt="Allenamento di gruppo all&#39;alba" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Allenamenti</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="eventi" data-placeholder="immagini/banner.jpg">
+                        <img src="immagini/banner.jpg" alt="Runner in controluce sulla spiaggia al tramonto con il logo del team" width="1441" height="640" loading="lazy">
+                        <span class="gallery-item__caption">Eventi</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="gare" data-placeholder="immagini/gallery/gallery-gara-02.jpg">
+                        <img src="immagini/gallery/gallery-gara-02.jpg" alt="Atleti del team al traguardo" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Gare</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="team" data-placeholder="immagini/gallery/gallery-team-01.jpg">
+                        <img src="immagini/gallery/gallery-team-01.jpg" alt="Foto di gruppo del team" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Team</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="allenamenti" data-placeholder="immagini/gallery/gallery-allenamento-02.jpg">
+                        <img src="immagini/gallery/gallery-allenamento-02.jpg" alt="Ripetute in pista" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Allenamenti</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="eventi" data-placeholder="immagini/gallery/gallery-evento-01.jpg">
+                        <img src="immagini/gallery/gallery-evento-01.jpg" alt="Premiazioni di un evento" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Eventi</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="gare" data-placeholder="immagini/gallery/gallery-gara-03.jpg">
+                        <img src="immagini/gallery/gallery-gara-03.jpg" alt="Partenza di una gara su strada" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Gare</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="team" data-placeholder="immagini/gallery/gallery-team-02.jpg">
+                        <img src="immagini/gallery/gallery-team-02.jpg" alt="Il team dopo una trasferta" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Team</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="allenamenti" data-placeholder="immagini/gallery/gallery-allenamento-03.jpg">
+                        <img src="immagini/gallery/gallery-allenamento-03.jpg" alt="Lungo domenicale" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Allenamenti</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="eventi" data-placeholder="immagini/gallery/gallery-evento-02.jpg">
+                        <img src="immagini/gallery/gallery-evento-02.jpg" alt="Festa di fine stagione" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Eventi</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="gare" data-placeholder="immagini/gallery/gallery-gara-04.jpg">
+                        <img src="immagini/gallery/gallery-gara-04.jpg" alt="Vignaletto Challenge" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Gare</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="team" data-placeholder="immagini/gallery/gallery-team-03.jpg">
+                        <img src="immagini/gallery/gallery-team-03.jpg" alt="Runner del team in maglia ufficiale" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Team</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="allenamenti" data-placeholder="immagini/gallery/gallery-allenamento-04.jpg">
+                        <img src="immagini/gallery/gallery-allenamento-04.jpg" alt="Riscaldamento prima dell&#39;allenamento" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Allenamenti</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-category="eventi" data-placeholder="immagini/gallery/gallery-evento-03.jpg">
+                        <img src="immagini/gallery/gallery-evento-03.jpg" alt="Da 0 a 10 KM" width="800" height="800" loading="lazy">
+                        <span class="gallery-item__caption">Eventi</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                </div>
+                <p class="gallery-empty" hidden>Nessuna foto in questa categoria… per ora!</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+        <div class="container footer__grid">
+            <div>
+                <a class="footer__brand" href="index.html">
+                    <img src="immagini/logo.png" alt="" width="76" height="76" loading="lazy">
+                    <span>
+                        <strong>Quelli dell'Alba</strong>
+                        <span>ROAD RUNNERS</span>
+                    </span>
+                </a>
+                <p class="footer__desc">
+                    Squadra di running nata dalla passione per la strada e dalla voglia di condividere ogni chilometro, dall'alba al traguardo.
+                </p>
+            </div>
+
+            <nav aria-label="Link rapidi">
+                <h2 class="footer__title">Link rapidi</h2>
+                <ul class="footer__links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#chi-siamo">Chi siamo</a></li>
+                    <li><a href="index.html#vignaletto">Gare</a></li>
+                    <li><a href="galleria.html">Galleria</a></li>
+                    <li><a href="index.html#contact-info">Contatti</a></li>
+                </ul>
+            </nav>
+
+            <div>
+                <h2 class="footer__title">Contatti</h2>
+                <ul class="footer__links">
+                    <li><a href="mailto:info@quellidellalba.com">info@quellidellalba.com</a></li>
+                    <li><a href="tel:+39">+39 XXX XXX XXXX</a></li>
+                </ul>
+                <div class="footer__social">
+                    <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 00-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer__bottom">
+            <p>© <span data-year>2026</span> Quelli dell'Alba – Road Runners</p>
+            <div class="footer__legal">
+                <a href="#" data-link="privacy-policy">Privacy Policy</a>
+                <a href="#" data-link="cookie-policy">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <a class="back-to-top" href="#main" aria-label="Torna su">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </a>
+
+    <!-- ===================== LIGHTBOX ===================== -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizzatore immagini" aria-hidden="true">
+        <button class="lightbox__btn lightbox__close" type="button" aria-label="Chiudi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <button class="lightbox__btn lightbox__prev" type="button" aria-label="Immagine precedente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <figure class="lightbox__figure">
+            <img class="lightbox__img" src="" alt="">
+            <div class="lightbox__placeholder" hidden></div>
+            <figcaption class="lightbox__caption"><span class="lightbox__counter"></span><span class="lightbox__text"></span></figcaption>
+        </figure>
+        <button class="lightbox__btn lightbox__next" type="button" aria-label="Immagine successiva">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+    </div>
+
+</body>
+</html>
