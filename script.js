@@ -13,7 +13,7 @@
    7. Immagini mancanti → placeholder
    8. Filtri galleria
    9. Lightbox
-   10. Google Maps placeholder
+   10. Consenso cookie + Google Maps
    11. Form contatti
    12. Piccole interazioni UI (back to top, anno footer, link non ancora attivi)
    ========================================================================== */
@@ -125,20 +125,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const menu = document.getElementById('nav-menu');
     const desktopQuery = window.matchMedia('(min-width: 1024px)');
 
-    const setMenu = (open) => {
+    // fromKeyboard: sposta il focus nel menu solo se aperto da tastiera
+    const setMenu = (open, fromKeyboard = false) => {
         if (!toggle || !menu) return;
         toggle.setAttribute('aria-expanded', String(open));
         toggle.setAttribute('aria-label', open ? 'Chiudi il menu' : 'Apri il menu');
         menu.classList.toggle('is-open', open);
         header.classList.toggle('nav-open', open);
         document.body.classList.toggle('no-scroll', open);
-        if (open) {
+        document.body.classList.toggle('menu-open', open);
+        if (open && fromKeyboard) {
             menu.querySelector('a')?.focus();
         }
     };
 
-    toggle?.addEventListener('click', () => {
-        setMenu(toggle.getAttribute('aria-expanded') !== 'true');
+    toggle?.addEventListener('click', (e) => {
+        // e.detail === 0 → "click" generato da tastiera (Invio/Spazio)
+        setMenu(toggle.getAttribute('aria-expanded') !== 'true', e.detail === 0);
     });
 
     // Chiude il menu quando si clicca un link
@@ -378,8 +381,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let index = 0;
         let lastFocused = null;
 
+        // Elementi apribili: foto della galleria e locandine ([data-lightbox-item])
+        const ITEM_SELECTOR = '.gallery-item, [data-lightbox-item]';
+
         const visibleItems = (container) =>
-            [...container.querySelectorAll('.gallery-item')].filter(
+            [...container.querySelectorAll(ITEM_SELECTOR)].filter(
                 (i) => !i.classList.contains('is-hidden') && !i.classList.contains('is-hiding')
             );
 
@@ -434,7 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.querySelectorAll('[data-lightbox-group]').forEach((container) => {
             container.addEventListener('click', (e) => {
-                const item = e.target.closest('.gallery-item');
+                const item = e.target.closest(ITEM_SELECTOR);
                 if (item) open(container, item);
             });
         });
@@ -482,30 +488,119 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ----------------------------------------------------------------------
-       10. GOOGLE MAPS PLACEHOLDER
-       Finché in index.html l'iframe ha src="[INSERIRE GOOGLE MAPS URL]"
-       viene mostrato un riquadro segnaposto.
+       10. CONSENSO COOKIE + GOOGLE MAPS
+       - Al primo accesso compare il banner (Accetta tutti / Solo necessari).
+       - La scelta viene salvata nel browser (localStorage) per 6 mesi.
+       - Google Maps (cookie di terze parti) viene caricata solo con "Accetta tutti";
+         altrimenti al suo posto c'è un riquadro con il pulsante per attivarla.
+       - Qualsiasi elemento con [data-cookie-settings] riapre il banner.
        ---------------------------------------------------------------------- */
-    document.querySelectorAll('.map iframe').forEach((iframe) => {
-        const src = iframe.getAttribute('src') || '';
-        if (src.startsWith('http')) return;
+    const CONSENT_KEY = 'qda-cookie-consent';
+    const CONSENT_DAYS = 180;
 
-        const placeholder = document.createElement('div');
-        placeholder.className = 'map__placeholder';
-        placeholder.innerHTML = `
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
-            <strong>Mappa in arrivo</strong>
-            <span>Inserire l'URL di Google Maps nell'iframe di index.html</span>
-            <code>[INSERIRE GOOGLE MAPS URL]</code>`;
-        iframe.replaceWith(placeholder);
+    const readConsent = () => {
+        try {
+            const saved = JSON.parse(localStorage.getItem(CONSENT_KEY));
+            if (!saved || !saved.value || !saved.date) return null;
+            const age = (Date.now() - new Date(saved.date).getTime()) / 86400000;
+            return age > CONSENT_DAYS ? null : saved.value;
+        } catch (err) {
+            return null;
+        }
+    };
+
+    const PIN_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+
+    const applyMaps = (consent) => {
+        document.querySelectorAll('.map iframe[data-src]').forEach((iframe) => {
+            const box = iframe.closest('.map');
+            let placeholder = box.querySelector('.map__placeholder');
+
+            if (consent === 'all') {
+                if (!iframe.getAttribute('src')) iframe.setAttribute('src', iframe.dataset.src);
+                iframe.hidden = false;
+                placeholder?.remove();
+                return;
+            }
+
+            iframe.hidden = true;
+            if (!placeholder) {
+                placeholder = document.createElement('div');
+                placeholder.className = 'map__placeholder';
+                placeholder.innerHTML = `
+                    ${PIN_ICON}
+                    <strong>Mappa di Google</strong>
+                    <span>Per vedere la mappa serve il consenso ai cookie di Google Maps.</span>
+                    <button class="btn btn--primary" type="button" data-consent-maps>Mostra la mappa</button>
+                    <a class="link-arrow" href="${iframe.dataset.mapsLink}" target="_blank" rel="noopener">Apri in Google Maps</a>`;
+                box.appendChild(placeholder);
+                placeholder.querySelector('[data-consent-maps]').addEventListener('click', () => saveConsent('all'));
+            }
+        });
+    };
+
+    let banner = null;
+
+    const hideBanner = () => {
+        if (!banner) return;
+        banner.classList.remove('is-visible');
+        setTimeout(() => { if (banner) banner.hidden = true; }, 400);
+    };
+
+    function saveConsent(value) {
+        try {
+            localStorage.setItem(CONSENT_KEY, JSON.stringify({ value, date: new Date().toISOString() }));
+        } catch (err) { /* storage non disponibile: la scelta vale per questa visita */ }
+        applyMaps(value);
+        hideBanner();
+    }
+
+    const showBanner = () => {
+        if (!banner) {
+            banner = document.createElement('div');
+            banner.className = 'cookie-banner';
+            banner.setAttribute('role', 'dialog');
+            banner.setAttribute('aria-labelledby', 'cookie-title');
+            banner.setAttribute('aria-describedby', 'cookie-text');
+            banner.innerHTML = `
+                <p class="cookie-banner__title" id="cookie-title">🍪 Questo sito usa i cookie</p>
+                <p class="cookie-banner__text" id="cookie-text">
+                    Usiamo cookie tecnici necessari al funzionamento del sito e, solo con il tuo consenso,
+                    cookie di terze parti (Google Maps) per mostrarti la mappa. Puoi cambiare idea in qualsiasi
+                    momento da “Preferenze cookie” in fondo alla pagina.
+                    <a href="cookie-policy.html">Cookie Policy</a> · <a href="privacy-policy.html">Privacy Policy</a>
+                </p>
+                <div class="cookie-banner__actions">
+                    <button class="btn btn--outline" type="button" data-consent="necessary">Solo necessari</button>
+                    <button class="btn btn--primary" type="button" data-consent="all">Accetta tutti</button>
+                </div>`;
+            document.body.appendChild(banner);
+            banner.querySelectorAll('[data-consent]').forEach((btn) => {
+                btn.addEventListener('click', () => saveConsent(btn.dataset.consent));
+            });
+        }
+        banner.hidden = false;
+        requestAnimationFrame(() => requestAnimationFrame(() => banner.classList.add('is-visible')));
+    };
+
+    const consent = readConsent();
+    applyMaps(consent);
+    if (!consent) showBanner();
+
+    document.querySelectorAll('[data-cookie-settings]').forEach((el) => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault();
+            showBanner();
+            banner.querySelector('[data-consent="all"]').focus();
+        });
     });
 
 
     /* ----------------------------------------------------------------------
        11. FORM CONTATTI
-       Validazione lato client + messaggio di successo.
-       Per collegare un backend: impostare l'attributo action (PHP/Formspree)
-       oppure data-endpoint (API custom) sul <form>.
+       Validazione lato client, poi invio diretto alla mail della squadra
+       tramite FormSubmit (data-endpoint sul <form>). Se l'invio fallisce
+       si apre l'app di posta con la mail già compilata.
        ---------------------------------------------------------------------- */
     const form = document.getElementById('contactForm');
 
@@ -539,7 +634,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return valid;
         };
 
-        const fields = [...form.querySelectorAll('input, textarea')];
+        // Solo i campi visibili (esclusi hidden e anti-spam)
+        const fields = [...form.querySelectorAll('input:not([type="hidden"]):not(.form-honeypot), textarea')];
 
         // Validazione "live" dopo il primo contatto con il campo
         fields.forEach((field) => {
@@ -565,22 +661,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const endpoint = form.dataset.endpoint || (form.getAttribute('action') !== '#' ? form.action : '');
+            const endpoint = form.dataset.endpoint;
             submitBtn.classList.add('is-loading');
             submitBtn.disabled = true;
 
+            // Dati del form come oggetto (JSON per FormSubmit)
+            const data = Object.fromEntries(new FormData(form).entries());
+            data.privacy = form.privacy.checked ? 'Sì, consenso dato' : 'No';
+
             try {
-                if (endpoint) {
-                    // Invio reale (Formspree / API / PHP che risponde in JSON)
-                    const response = await fetch(endpoint, {
-                        method: 'POST',
-                        body: new FormData(form),
-                        headers: { Accept: 'application/json' }
-                    });
-                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                } else {
-                    // Nessun backend configurato: simulazione dell'invio
-                    await new Promise((resolve) => setTimeout(resolve, 900));
+                if (!endpoint) throw new Error('Endpoint non configurato');
+
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json().catch(() => ({}));
+                if (!response.ok || String(result.success) !== 'true') {
+                    throw new Error(result.message || `HTTP ${response.status}`);
                 }
 
                 form.reset();
@@ -588,7 +687,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 success.classList.add('is-visible');
                 success.focus();
             } catch (err) {
-                alert('Si è verificato un errore durante l\'invio. Riprova più tardi o scrivici a info@quellidellalba.com');
+                // Piano B: apre l'app di posta con la mail già compilata
+                const to = form.dataset.mailto || 'quellidellalba@gmail.com';
+                const subject = 'Richiesta dal sito – Quelli dell\'Alba';
+                const body = [
+                    `Nome: ${data.nome || ''} ${data.cognome || ''}`,
+                    `Email: ${data.email || ''}`,
+                    `Telefono: ${data.telefono || '-'}`,
+                    '',
+                    data.messaggio || ''
+                ].join('\n');
+                const ok = confirm('Non siamo riusciti a inviare la richiesta automaticamente.\nVuoi inviarla dalla tua app di posta? La mail sarà già compilata.');
+                if (ok) {
+                    window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                }
             } finally {
                 submitBtn.classList.remove('is-loading');
                 submitBtn.disabled = false;

@@ -1,0 +1,32 @@
+# Quelli dell'Alba – Road Runners
+# Tutti i motori di ricerca e gli assistenti AI possono leggere il sito.
+User-agent: *
+Allow: /
+Disallow: /immagini/originali/
+
+# Motori di risposta AI (GEO): accesso esplicitamente consentito
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://www.quellidellalba.com/sitemap.xml

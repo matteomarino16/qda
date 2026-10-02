@@ -1,0 +1,14 @@
+{
+    "name": "Quelli dell'Alba – Road Runners",
+    "short_name": "Quelli dell'Alba",
+    "description": "Squadra di running di Martina Franca (TA)",
+    "lang": "it",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#fff7ee",
+    "theme_color": "#26004d",
+    "icons": [
+        { "src": "immagini/icon-192.png", "sizes": "192x192", "type": "image/png" },
+        { "src": "immagini/icon-512.png", "sizes": "512x512", "type": "image/png" }
+    ]
+}

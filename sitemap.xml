@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Aggiornare <lastmod> quando si modifica una pagina -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>https://www.quellidellalba.com/</loc>
+        <lastmod>2026-10-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+        <image:image><image:loc>https://www.quellidellalba.com/immagini/og-image.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.com/immagini/gare/vignaletto-locandina-2026.jpg</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://www.quellidellalba.com/galleria.html</loc>
+        <lastmod>2026-10-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image><image:loc>https://www.quellidellalba.com/immagini/gallery/gallery-team-01.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.com/immagini/gallery/gallery-gara-01.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.com/immagini/gallery/gallery-gara-02.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.com/immagini/gallery/gallery-team-02.jpg</image:loc></image:image>
+    </url>
+</urlset>

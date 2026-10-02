@@ -4,63 +4,256 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Quelli dell'Alba – Road Runners | Running Team</title>
-    <meta name="description" content="Quelli dell'Alba – Road Runners: squadra di running, gare, eventi e passione per la corsa.">
-    <meta name="theme-color" content="#26004d">
+    <!-- ===================== SEO ===================== -->
+    <!-- ===================== SEO ===================== -->
+    <title>Quelli dell'Alba Road Runners | Squadra di running a Martina Franca</title>
+    <meta name="description" content="Squadra di running di Martina Franca (TA) in Valle d'Itria: allenamenti di gruppo, la Vignaletto Challenge, il progetto Da 0 a 10 KM e una comunità che corre all'alba.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Quelli dell'Alba – Road Runners">
     <link rel="canonical" href="https://www.quellidellalba.com/">
+    <meta name="theme-color" content="#26004d">
+    <meta name="format-detection" content="telephone=no">
 
-    <!-- Open Graph -->
+    <!-- Local SEO (geo) – Martina Franca (TA) -->
+    <meta name="geo.region" content="IT-TA">
+    <meta name="geo.placename" content="Martina Franca">
+    <meta name="geo.position" content="40.7037;17.3442">
+    <meta name="ICBM" content="40.7037, 17.3442">
+
+    <!-- Open Graph (Facebook, WhatsApp, Instagram, LinkedIn) -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="it_IT">
     <meta property="og:site_name" content="Quelli dell'Alba – Road Runners">
-    <meta property="og:title" content="Quelli dell'Alba – Road Runners | Running Team">
-    <meta property="og:description" content="Quelli dell'Alba – Road Runners: squadra di running, gare, eventi e passione per la corsa.">
+    <meta property="og:title" content="Quelli dell'Alba Road Runners | Squadra di running a Martina Franca">
+    <meta property="og:description" content="Squadra di running di Martina Franca (TA) in Valle d'Itria: allenamenti di gruppo, la Vignaletto Challenge, il progetto Da 0 a 10 KM e una comunità che corre all'alba.">
     <meta property="og:url" content="https://www.quellidellalba.com/">
-    <meta property="og:image" content="https://www.quellidellalba.com/immagini/banner.jpg">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://www.quellidellalba.com/immagini/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Runner in controluce all'alba sulla spiaggia con il logo di Quelli dell'Alba Road Runners">
 
-    <!-- Favicon (sostituibile con un .ico / .svg dedicato) -->
-    <link rel="icon" type="image/png" href="immagini/favicon.png">
-    <link rel="apple-touch-icon" href="immagini/favicon.png">
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Quelli dell'Alba Road Runners | Squadra di running a Martina Franca">
+    <meta name="twitter:description" content="Squadra di running di Martina Franca (TA) in Valle d'Itria: allenamenti di gruppo, la Vignaletto Challenge, il progetto Da 0 a 10 KM e una comunità che corre all'alba.">
+    <meta name="twitter:image" content="https://www.quellidellalba.com/immagini/og-image.jpg">
+
+    <!-- Icone e web app -->
+    <link rel="icon" type="image/png" sizes="192x192" href="immagini/icon-192.png">
+    <link rel="apple-touch-icon" href="immagini/icon-192.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Immagine principale della hero: caricata subito (versione mobile 800px / desktop 1440px) -->
+    <link rel="preload" as="image" href="immagini/sfondo-hero.jpeg"
+          imagesrcset="immagini/sfondo-hero-800.jpg 800w, immagini/sfondo-hero.jpeg 1440w" imagesizes="100vw" fetchpriority="high">
+
+    <!-- Dati strutturati Schema.org (Google, Bing e motori di risposta AI) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": [
+                    "SportsClub",
+                    "SportsTeam"
+                ],
+                "@id": "https://www.quellidellalba.com/#organizzazione",
+                "name": "Quelli dell'Alba – Road Runners",
+                "alternateName": [
+                    "Quelli dell'Alba",
+                    "Quelli dell'Alba Road Runners",
+                    "Q.A.R.R."
+                ],
+                "description": "Squadra di running di Martina Franca (TA), in Valle d'Itria: allenamenti di gruppo, gare su strada, la Vignaletto Challenge e il progetto Da 0 a 10 KM.",
+                "sport": "Running",
+                "url": "https://www.quellidellalba.com/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.quellidellalba.com/immagini/logo.png",
+                    "width": 900,
+                    "height": 900
+                },
+                "image": "https://www.quellidellalba.com/immagini/og-image.jpg",
+                "email": "quellidellalba@gmail.com",
+                "telephone": "+393935051979",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Via Orazio Flacco 65",
+                    "postalCode": "74015",
+                    "addressLocality": "Martina Franca",
+                    "addressRegion": "TA",
+                    "addressCountry": "IT"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 40.7037,
+                    "longitude": 17.3442
+                },
+                "hasMap": "https://www.google.com/maps/search/?api=1&query=Via+Orazio+Flacco+65,+74015+Martina+Franca+TA",
+                "areaServed": [
+                    {
+                        "@type": "City",
+                        "name": "Martina Franca"
+                    },
+                    {
+                        "@type": "Place",
+                        "name": "Valle d'Itria"
+                    },
+                    {
+                        "@type": "AdministrativeArea",
+                        "name": "Puglia"
+                    }
+                ],
+                "knowsAbout": [
+                    "Running",
+                    "Corsa su strada",
+                    "Podismo",
+                    "Allenamento di gruppo",
+                    "Corsa per principianti"
+                ],
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "contactType": "informazioni e iscrizioni",
+                    "telephone": "+393935051979",
+                    "email": "quellidellalba@gmail.com",
+                    "availableLanguage": "Italian",
+                    "areaServed": "IT"
+                },
+                "sponsor": [
+                    {
+                        "@type": "Organization",
+                        "name": "Allianz – Passoforte Assicurazioni"
+                    },
+                    {
+                        "@type": "Organization",
+                        "name": "Domus Medica"
+                    },
+                    {
+                        "@type": "Organization",
+                        "name": "Dott. Paolo Solito – Biologo nutrizionista"
+                    }
+                ],
+                "sameAs": [
+                    "https://www.instagram.com/quelli_dell_alba/"
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://www.quellidellalba.com/#sito",
+                "url": "https://www.quellidellalba.com/",
+                "name": "Quelli dell'Alba – Road Runners",
+                "inLanguage": "it-IT",
+                "publisher": {
+                    "@id": "https://www.quellidellalba.com/#organizzazione"
+                }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://www.quellidellalba.com/#pagina",
+                "url": "https://www.quellidellalba.com/",
+                "name": "Quelli dell'Alba Road Runners | Squadra di running a Martina Franca",
+                "description": "Squadra di running di Martina Franca (TA) in Valle d'Itria: allenamenti di gruppo, la Vignaletto Challenge, il progetto Da 0 a 10 KM e una comunità che corre all'alba.",
+                "inLanguage": "it-IT",
+                "isPartOf": {
+                    "@id": "https://www.quellidellalba.com/#sito"
+                },
+                "about": {
+                    "@id": "https://www.quellidellalba.com/#organizzazione"
+                },
+                "primaryImageOfPage": {
+                    "@type": "ImageObject",
+                    "url": "https://www.quellidellalba.com/immagini/og-image.jpg"
+                }
+            },
+            {
+                "@type": "SportsEvent",
+                "@id": "https://www.quellidellalba.com/#vignaletto-challenge-2026",
+                "name": "Erboristeria Linneo Vignaletto Challenge 2026",
+                "sport": "Running",
+                "startDate": "2026-05-01T09:30:00+02:00",
+                "eventStatus": "https://schema.org/EventScheduled",
+                "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                "description": "Gara podistica su strada competitiva e non competitiva da 9,8 km e Vignaletto Family da 5 km, organizzata da Quelli dell'Alba – Road Runners.",
+                "image": "https://www.quellidellalba.com/immagini/gare/vignaletto-locandina-2026.jpg",
+                "location": {
+                    "@type": "Place",
+                    "name": "C.da Pergolo, Martina Franca",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "C.da Pergolo",
+                        "addressLocality": "Martina Franca",
+                        "addressRegion": "TA",
+                        "addressCountry": "IT"
+                    }
+                },
+                "organizer": {
+                    "@id": "https://www.quellidellalba.com/#organizzazione"
+                },
+                "sponsor": {
+                    "@type": "Organization",
+                    "name": "Erboristeria Linneo"
+                }
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://www.quellidellalba.com/#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Chi sono Quelli dell'Alba – Road Runners?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Quelli dell'Alba – Road Runners è una squadra di running di Martina Franca (TA), in Valle d'Itria. Riunisce runner di ogni età e livello che condividono allenamenti di gruppo, gare su strada, trasferte ed eventi."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Posso unirmi alla squadra anche se sono un principiante?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Sì. Nel gruppo c'è chi prepara la maratona e chi ha appena corso il suo primo chilometro. Per chi parte da zero c'è il progetto Da 0 a 10 KM, pensato per arrivare a correre 10 km in continuità."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Che cos'è la Vignaletto Challenge?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "È la gara podistica organizzata da Quelli dell'Alba Road Runners. L'edizione 2026, Erboristeria Linneo Vignaletto Challenge, si è corsa il 1° maggio 2026 alle 9:30 in C.da Pergolo a Martina Franca, con una gara competitiva e non competitiva da 9,8 km e la Vignaletto Family da 5 km."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Che cos'è il progetto Da 0 a 10 KM?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "È un percorso per chi vuole iniziare a correre, migliorarsi e stare bene, con l'obiettivo di correre 10 km in continuità insieme a un gruppo che condivide fatica, sorrisi e soddisfazioni."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Dove si trova la squadra e come posso contattarvi?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "La sede è in Via Orazio Flacco 65, 74015 Martina Franca (TA). Puoi scrivere a quellidellalba@gmail.com, chiamare o scrivere su WhatsApp al +39 393 505 1979, oppure usare il modulo Contattaci del sito."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..900&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,600..900,0..100,0..1;1,9..144,600..900,0..100,0..1&display=swap" rel="stylesheet">
 
-    <link rel="preload" as="image" href="immagini/sfondo-hero.jpeg">
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Schema.org – SportsTeam (completare i campi tra parentesi quadre) -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SportsTeam",
-        "name": "Quelli dell'Alba – Road Runners",
-        "alternateName": "Quelli dell'Alba",
-        "sport": "Running",
-        "url": "https://www.quellidellalba.com/",
-        "logo": "https://www.quellidellalba.com/immagini/logo.png",
-        "image": "https://www.quellidellalba.com/immagini/banner.jpg",
-        "description": "Squadra di running, gare, eventi e passione per la corsa.",
-        "email": "info@quellidellalba.com",
-        "telephone": "[INSERIRE TELEFONO]",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "[INSERIRE INDIRIZZO]",
-            "addressLocality": "[INSERIRE CITTÀ]",
-            "addressCountry": "IT"
-        },
-        "sameAs": [
-            "[INSERIRE URL INSTAGRAM]",
-            "[INSERIRE URL FACEBOOK]"
-        ]
-    }
-    </script>
+    <link rel="stylesheet" href="style.css?v=11">
 
     <!-- Attiva le animazioni solo se JavaScript è disponibile -->
     <script>document.documentElement.classList.add('js');</script>
-    <script src="script.js" defer></script>
+    <script src="script.js?v=11" defer></script>
 </head>
 <body class="has-flying-logo">
 
@@ -70,7 +263,7 @@
     <header class="site-header" id="site-header">
         <nav class="nav container" aria-label="Navigazione principale">
             <a class="nav__brand" href="index.html" aria-label="Quelli dell'Alba – Road Runners, torna alla home">
-                <img class="nav__logo" src="immagini/logo.png" alt="" width="52" height="52">
+                <img class="nav__logo" src="immagini/logo-small.png" alt="" width="52" height="52">
                 <span class="nav__name">
                     Quelli dell'Alba
                     <small>Road Runners</small>
@@ -90,6 +283,13 @@
                     <li><a class="nav__link" href="#contact-info" data-section="contact-info contact-form">Contatti</a></li>
                 </ul>
                 <a class="btn btn--primary nav__cta" href="#contact-form">Unisciti a noi</a>
+                <div class="nav__extra">
+                    <span>Contattaci</span>
+                    <a href="https://www.instagram.com/quelli_dell_alba/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+                    <a href="https://wa.me/393935051979" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-2-1.2 7.4 7.4 0 01-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c.6.3 1.1.4 1.5.5a3.6 3.6 0 001.7.1 2.8 2.8 0 001.8-1.3 2.3 2.3 0 00.2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+                    <a href="tel:+393935051979" aria-label="Telefono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></a>
+                    <a href="mailto:quellidellalba@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+                </div>
             </div>
         </nav>
     </header>
@@ -108,7 +308,7 @@
         <section id="hero" aria-labelledby="hero-title">
             <div class="hero__bg" aria-hidden="true">
                 <!-- Sostituire con la foto del team preferita -->
-                <img src="immagini/sfondo-hero.jpeg" alt="" width="1440" height="1585" fetchpriority="high">
+                <img src="immagini/sfondo-hero.jpeg" srcset="immagini/sfondo-hero-800.jpg 800w, immagini/sfondo-hero.jpeg 1440w" sizes="100vw" alt="" width="1440" height="1585" fetchpriority="high">
             </div>
             <div class="hero__overlay" aria-hidden="true"></div>
             <div class="hero__rays" aria-hidden="true"></div>
@@ -118,10 +318,9 @@
 
             <div class="container hero__inner">
                 <div class="hero__content">
-                    <p class="hero__kicker" data-reveal="fade">Quelli dell'Alba</p>
                     <h1 class="hero__title" id="hero-title" data-reveal>
-                        Road Runners.
-                        <span>Corri con noi.</span>
+                        Quelli dell'Alba
+                        <span>Road Runners</span>
                     </h1>
                     <p class="hero__subtitle" data-reveal style="--reveal-delay: .1s">
                         Passione, strada, comunità e quella voglia di esserci prima dell'alba.
@@ -149,25 +348,27 @@
         <!-- ===================== SPONSOR ===================== -->
         <section id="sponsors" aria-labelledby="sponsors-title">
             <div class="container">
-                <h2 class="sponsors__title" id="sponsors-title">CON IL SUPPORTO DEI NOSTRI PARTNER</h2>
-                <!-- Per cambiare sponsor: sostituire immagine, alt e href -->
-                <ul class="sponsors__list">
-                    <li data-reveal>
-                        <a class="sponsor-card sponsor-card--fill" href="#" target="_blank" rel="noopener" aria-label="Allianz Passoforte Assicurazioni (sito sponsor)">
-                            <img src="immagini/sponsor/sponsor-01-allianz-passoforte.png" alt="Allianz – Passoforte Assicurazioni" width="1200" height="858" loading="lazy">
-                        </a>
-                    </li>
-                    <li data-reveal style="--reveal-delay: .1s">
-                        <a class="sponsor-card" href="#" target="_blank" rel="noopener" aria-label="Domus Medica (sito sponsor)">
-                            <img src="immagini/sponsor/sponsor-02-domus-medica.png" alt="Domus Medica" width="597" height="417" loading="lazy">
-                        </a>
-                    </li>
-                    <li data-reveal style="--reveal-delay: .2s">
-                        <a class="sponsor-card" href="#" target="_blank" rel="noopener" aria-label="Dott. Paolo Solito, biologo nutrizionista (sito sponsor)">
-                            <img src="immagini/sponsor/sponsor-03-paolo-solito.png" alt="Dott. Paolo Solito – Biologo nutrizionista, Centro nutrizionale" width="800" height="594" loading="lazy">
-                        </a>
-                    </li>
-                </ul>
+                <div class="sponsors__bar" data-reveal>
+                    <h2 class="sponsors__title" id="sponsors-title">Con il supporto dei nostri partner</h2>
+                    <!-- Per cambiare uno sponsor: sostituire immagine (PNG trasparente), alt e href -->
+                    <ul class="sponsors__list">
+                        <li>
+                            <a class="sponsor" href="#" target="_blank" rel="noopener" aria-label="Allianz Passoforte Assicurazioni (sito sponsor)">
+                                <img src="immagini/sponsor/sponsor-01-allianz-passoforte.png" alt="Allianz – Passoforte Assicurazioni" width="900" height="398" loading="lazy">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sponsor" href="#" target="_blank" rel="noopener" aria-label="Domus Medica (sito sponsor)">
+                                <img src="immagini/sponsor/sponsor-02-domus-medica.png" alt="Domus Medica" width="565" height="393" loading="lazy">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sponsor" href="#" target="_blank" rel="noopener" aria-label="Dott. Paolo Solito, biologo nutrizionista (sito sponsor)">
+                                <img src="immagini/sponsor/sponsor-03-paolo-solito.png" alt="Dott. Paolo Solito – Biologo nutrizionista, Centro nutrizionale" width="700" height="520" loading="lazy">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -179,7 +380,6 @@
                     <img class="about__logo" src="immagini/logo.png" alt="Logo Quelli dell'Alba – Road Runners" width="900" height="900" loading="lazy">
                     <div class="about__badge">
                         <img src="immagini/fidal.png" alt="FIDAL – Federazione Italiana di Atletica Leggera" width="331" height="152" loading="lazy">
-                        <span>Società affiliata</span>
                     </div>
                 </div>
 
@@ -187,38 +387,17 @@
                     <p class="eyebrow">Chi siamo</p>
                     <h2 id="about-title">Non siamo solo una squadra. <em>Siamo una comunità.</em></h2>
                     <p class="lead">
-                        Quelli dell'Alba – Road Runners nasce dalla passione per la corsa, dalla voglia di condividere chilometri e dalla convinzione che correre insieme renda ogni traguardo più bello.
+                        Quelli dell'Alba – Road Runners nasce a Martina Franca, nel cuore della Valle d'Itria, dalla passione per la corsa, dalla voglia di condividere chilometri e dalla convinzione che correre insieme renda ogni traguardo più bello.
                     </p>
                     <div class="about__text">
-                        <!-- [INSERIRE TESTO DESCRITTIVO DEL TEAM] -->
                         <p>
                             Ci ritroviamo quando la città dorme ancora, con le scarpe allacciate e il sole che inizia a colorare la strada. Siamo runner di ogni età e livello: c'è chi prepara la maratona e chi ha appena corso il suo primo chilometro, ma tutti condividiamo lo stesso spirito.
                         </p>
                         <p>
-                            Allenamenti di gruppo, gare su strada, trasferte ed eventi organizzati da noi: ogni uscita è un'occasione per migliorarsi, sostenersi a vicenda e vivere il territorio di corsa. [INSERIRE STORIA DEL TEAM, ANNO DI FONDAZIONE E VALORI]
+                            Allenamenti di gruppo, gare su strada, trasferte ed eventi organizzati da noi: ogni uscita è un'occasione per migliorarsi, sostenersi a vicenda e vivere il territorio di corsa.
                         </p>
                     </div>
 
-                    <!-- Statistiche: modificare data-count con il numero reale (es. data-count="120").
-                         Se data-count è vuoto viene mostrato il testo "XX". -->
-                    <ul class="stats">
-                        <li class="stat">
-                            <span class="stat__value" data-count="" data-prefix="+">XX</span>
-                            <span class="stat__label">Atleti</span>
-                        </li>
-                        <li class="stat">
-                            <span class="stat__value" data-count="">XX</span>
-                            <span class="stat__label">Gare</span>
-                        </li>
-                        <li class="stat">
-                            <span class="stat__value" data-count="">XX</span>
-                            <span class="stat__label">Anni</span>
-                        </li>
-                        <li class="stat">
-                            <span class="stat__value" data-count="">XXXX</span>
-                            <span class="stat__label">Km</span>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </section>
@@ -228,27 +407,29 @@
             <div class="race__stripes" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
             <div class="container race__grid">
-                <div class="race__media" data-reveal="left">
-                    <div class="race__photo media" data-placeholder="immagini/gare/vignaletto-01.jpg">
-                        <!-- Inserire la foto della gara in immagini/gare/vignaletto-01.jpg -->
-                        <img src="immagini/gare/vignaletto-01.jpg" alt="Partenza della Vignaletto Challenge" width="1200" height="1500" loading="lazy">
-                    </div>
-                    <div class="race__logo-badge">
-                        <img src="immagini/vignaletto-logo.png" alt="Logo Vignaletto Challenge" width="504" height="236" loading="lazy">
-                    </div>
+                <div class="race__media" data-reveal="left" data-lightbox-group>
+                    <!-- Locandina ufficiale: al clic si apre in grande nel lightbox.
+                         Per una nuova edizione sostituire immagini/gare/vignaletto-locandina-2026.jpg -->
+                    <button class="race__poster" type="button" data-lightbox-item aria-label="Apri in grande la locandina della Vignaletto Challenge 2026">
+                        <img src="immagini/gare/vignaletto-locandina-2026.jpg" alt="Locandina Vignaletto Challenge 2026: 1 maggio 2026 ore 9.30, C.da Pergolo – Martina Franca. Competitiva e non da 9,8 km, Vignaletto Family da 5 km" width="904" height="1280" loading="lazy">
+                        <span class="race__poster-hint" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>
+                            Locandina
+                        </span>
+                    </button>
                 </div>
 
                 <div class="race__content" data-reveal="right">
                     <p class="eyebrow">La gara principale</p>
                     <h2 id="vignaletto-title">Vignaletto Challenge</h2>
                     <p class="race__tagline">La nostra gara. La nostra strada.</p>
+                    <p class="race__edition">Edizione 2026 · Erboristeria Linneo</p>
                     <div class="race__desc">
-                        <!-- [INSERIRE DESCRIZIONE DELLA GARA] -->
                         <p>
-                            La Vignaletto Challenge è l'appuntamento che organizziamo con il cuore: una gara pensata per chi ama la strada, la fatica condivisa e l'atmosfera di festa che si respira al traguardo.
+                            <strong>Il benessere incontra l'adrenalina!</strong> È con grande entusiasmo che annunciamo la partnership che, il prossimo 1° maggio, farà vibrare l'intera Valle d'Itria: <strong>Erboristeria Linneo</strong> di Martina Franca diventa il title sponsor ufficiale della Vignaletto Challenge, la gara podistica di Quelli dell'Alba Road Runners, dando vita, per l'edizione 2026, alla <strong>Erboristeria Linneo Vignaletto Challenge</strong>! 🏅🌱
                         </p>
                         <p>
-                            [INSERIRE DETTAGLI: percorso, categorie, ristori, premiazioni, regolamento.]
+                            Due percorsi per tutti: la gara da <strong>9,8 km</strong>, competitiva e non competitiva, e la <strong>Vignaletto Family da 5 km</strong>, per correre insieme a tutta la famiglia.
                         </p>
                     </div>
 
@@ -258,28 +439,28 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
                             </span>
                             <span class="info-card__label">Data</span>
-                            <span class="info-card__value">[INSERIRE DATA GARA]</span>
+                            <span class="info-card__value">1 maggio 2026</span>
                         </li>
                         <li class="info-card">
                             <span class="info-card__icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
                             </span>
                             <span class="info-card__label">Distanza</span>
-                            <span class="info-card__value">[INSERIRE KM]</span>
+                            <span class="info-card__value">9,8 km · Family 5 km</span>
                         </li>
                         <li class="info-card">
                             <span class="info-card__icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
                             </span>
                             <span class="info-card__label">Partenza</span>
-                            <span class="info-card__value">[INSERIRE ORARIO]</span>
+                            <span class="info-card__value">Ore 9:30</span>
                         </li>
                         <li class="info-card">
                             <span class="info-card__icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
                             </span>
                             <span class="info-card__label">Location</span>
-                            <span class="info-card__value">[INSERIRE LOCATION]</span>
+                            <span class="info-card__value">C.da Pergolo, Martina Franca</span>
                         </li>
                     </ul>
 
@@ -299,69 +480,108 @@
         <section id="da-zero-a-dieci" class="section race race--reverse" aria-labelledby="da0a10-title">
             <div class="container race__grid">
                 <div class="race__media" data-reveal="right">
-                    <div class="race__photo media" data-placeholder="immagini/gare/da-0-a-10km-01.jpg">
-                        <!-- Inserire la foto in immagini/gare/da-0-a-10km-01.jpg -->
-                        <img src="immagini/gare/da-0-a-10km-01.jpg" alt="Partecipanti alla manifestazione Da 0 a 10 KM" width="1200" height="1500" loading="lazy">
-                    </div>
-                    <div class="race__logo-badge">
-                        <img src="immagini/da0a10-logo.png" alt="Logo Da 0 a 10 – Martina Franca, Quelli dell'Alba Road Runners" width="666" height="330" loading="lazy">
+                    <!-- Solo il logo del progetto (nessuna locandina) -->
+                    <div class="race__logo-card">
+                        <span class="race__logo-card-num" aria-hidden="true">10</span>
+                        <img src="immagini/gare/da0a10-logo-trasparente.png" alt="Logo Da 0 a 10 – Martina Franca, Quelli dell'Alba Road Runners" width="568" height="289" loading="lazy">
                     </div>
                 </div>
 
                 <div class="race__content" data-reveal="left">
-                    <p class="eyebrow">L'altra manifestazione</p>
+                    <p class="eyebrow">Il nostro progetto</p>
                     <h2 id="da0a10-title">Da 0 a <span>10 KM</span></h2>
                     <p class="race__tagline">Dal primo passo al traguardo.</p>
                     <div class="race__desc">
-                        <!-- [INSERIRE DESCRIZIONE DELLA MANIFESTAZIONE] -->
                         <p>
-                            Da 0 a 10 KM è la manifestazione pensata per accompagnare chiunque, passo dopo passo, a scoprire la corsa e arrivare a correre i suoi primi 10 chilometri.
+                            Un percorso pensato per chi vuole iniziare a correre, migliorarsi, stare bene e raggiungere un obiettivo che sembra impossibile… ma che insieme diventa realtà: <strong>correre 10 KM in continuità!</strong> 🔟
                         </p>
                         <p>
-                            [INSERIRE DETTAGLI: programma, a chi è rivolta, modalità di partecipazione.]
+                            Non importa da dove parti. Importa la voglia di metterti in gioco, condividere fatica, sorrisi e soddisfazioni con un gruppo straordinario.
                         </p>
                     </div>
 
                     <ul class="race__info">
                         <li class="info-card">
                             <span class="info-card__icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3.5"/><path d="M2.5 21v-1a6.5 6.5 0 0113 0v1"/><path d="M16 4a3.5 3.5 0 010 7M21.5 21v-1a6.5 6.5 0 00-4-6"/></svg>
                             </span>
-                            <span class="info-card__label">Data</span>
-                            <span class="info-card__value">[INSERIRE DATA GARA]</span>
-                        </li>
-                        <li class="info-card">
-                            <span class="info-card__icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19c4 0 4-6 8-6s4-6 8-6"/><circle cx="4" cy="19" r="1.5"/><circle cx="20" cy="7" r="1.5"/></svg>
-                            </span>
-                            <span class="info-card__label">Percorso</span>
-                            <span class="info-card__value">[INSERIRE PERCORSO]</span>
-                        </li>
-                        <li class="info-card">
-                            <span class="info-card__icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
-                            </span>
-                            <span class="info-card__label">Luogo</span>
-                            <span class="info-card__value">Martina Franca – [INSERIRE LUOGO]</span>
+                            <span class="info-card__label">Per chi</span>
+                            <span class="info-card__value">Chi vuole iniziare o migliorarsi</span>
                         </li>
                         <li class="info-card">
                             <span class="info-card__icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
                             </span>
-                            <span class="info-card__label">Distanza</span>
-                            <span class="info-card__value">10 km</span>
+                            <span class="info-card__label">Obiettivo</span>
+                            <span class="info-card__value">10 km in continuità</span>
+                        </li>
+                        <li class="info-card">
+                            <span class="info-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                            </span>
+                            <span class="info-card__label">Dove</span>
+                            <span class="info-card__value">Martina Franca</span>
+                        </li>
+                        <li class="info-card">
+                            <span class="info-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z"/></svg>
+                            </span>
+                            <span class="info-card__label">Con chi</span>
+                            <span class="info-card__value">Un gruppo straordinario</span>
                         </li>
                     </ul>
 
                     <div class="btn-group">
-                        <!-- Sostituire href="#" con i link reali -->
-                        <a class="btn btn--teal" href="#" data-link="da0a10-info">
-                            Scopri di più
+                        <a class="btn btn--teal" href="https://wa.me/393935051979?text=Ciao!%20Vorrei%20informazioni%20sul%20progetto%20Da%200%20a%2010%20KM" target="_blank" rel="noopener">
+                            Voglio partecipare
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                         </a>
-                        <a class="btn btn--outline" href="#" data-link="da0a10-iscrizioni">Partecipa</a>
+                        <a class="btn btn--outline" href="#contact-form">Chiedi info</a>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- ===================== SEGUICI SUI SOCIAL ===================== -->
+        <section id="social" class="section" aria-labelledby="social-title">
+            <div class="container">
+                <div class="section-head section-head--center" data-reveal>
+                    <p class="eyebrow">Restiamo in contatto</p>
+                    <h2 id="social-title">Seguici sui social</h2>
+                    <p>Allenamenti, gare, foto e novità: corri con noi anche online.</p>
+                </div>
+
+                <ul class="social-grid">
+                    <li data-reveal>
+                        <a class="social-card social-card--instagram" href="https://www.instagram.com/quelli_dell_alba/" target="_blank" rel="noopener">
+                            <span class="social-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>
+                            <span class="social-card__name">Instagram</span>
+                            <span class="social-card__handle">@quelli_dell_alba</span>
+                        </a>
+                    </li>
+                    <li data-reveal style="--reveal-delay: .08s">
+                        <!-- [INSERIRE URL FACEBOOK] al posto di # -->
+                        <a class="social-card social-card--facebook" href="#" target="_blank" rel="noopener">
+                            <span class="social-card__icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 00-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg></span>
+                            <span class="social-card__name">Facebook</span>
+                            <span class="social-card__handle">Quelli dell'Alba Road Runners</span>
+                        </a>
+                    </li>
+                    <li data-reveal style="--reveal-delay: .16s">
+                        <a class="social-card social-card--whatsapp" href="https://wa.me/393935051979" target="_blank" rel="noopener">
+                            <span class="social-card__icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-2-1.2 7.4 7.4 0 01-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c.6.3 1.1.4 1.5.5a3.6 3.6 0 001.7.1 2.8 2.8 0 001.8-1.3 2.3 2.3 0 00.2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></span>
+                            <span class="social-card__name">WhatsApp</span>
+                            <span class="social-card__handle">Scrivici in chat</span>
+                        </a>
+                    </li>
+                    <li data-reveal style="--reveal-delay: .24s">
+                        <a class="social-card social-card--phone" href="tel:+393935051979">
+                            <span class="social-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></span>
+                            <span class="social-card__name">Telefono</span>
+                            <span class="social-card__handle">+39 393 505 1979</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </section>
 
@@ -376,34 +596,34 @@
 
                 <!-- Click su una foto = lightbox. Le foto mancanti mostrano un segnaposto col nome del file. -->
                 <div class="preview-grid" data-lightbox-group>
-                    <button class="gallery-item media" type="button" data-reveal data-placeholder="immagini/sfondo-hero.jpeg">
-                        <img src="immagini/sfondo-hero.jpeg" alt="Tre atleti del team con la felpa ufficiale prima di una gara" width="1440" height="1585" loading="lazy">
+                    <button class="gallery-item media" type="button" data-reveal data-placeholder="immagini/gallery/gallery-team-01.jpg">
+                        <img src="immagini/gallery/gallery-team-01.jpg" alt="Il team con la giacca ufficiale in posa davanti a un carro allegorico" width="1400" height="932" loading="lazy">
                         <span class="gallery-item__caption">Team</span>
                         <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
                     </button>
                     <button class="gallery-item media" type="button" data-reveal style="--reveal-delay: .05s" data-placeholder="immagini/gallery/gallery-gara-01.jpg">
-                        <img src="immagini/gallery/gallery-gara-01.jpg" alt="Momento di gara" width="800" height="800" loading="lazy">
+                        <img src="immagini/gallery/gallery-gara-01.jpg" alt="Tre atleti del team abbracciati sul percorso di gara, visti di spalle con la canotta ufficiale" width="1400" height="1050" loading="lazy">
                         <span class="gallery-item__caption">Gare</span>
                         <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
                     </button>
-                    <button class="gallery-item media" type="button" data-reveal style="--reveal-delay: .1s" data-placeholder="immagini/gallery/gallery-allenamento-01.jpg">
-                        <img src="immagini/gallery/gallery-allenamento-01.jpg" alt="Allenamento di gruppo all'alba" width="800" height="800" loading="lazy">
-                        <span class="gallery-item__caption">Allenamenti</span>
+                    <button class="gallery-item media" type="button" data-reveal style="--reveal-delay: .1s" data-placeholder="immagini/gallery/gallery-gara-02.jpg">
+                        <img src="immagini/gallery/gallery-gara-02.jpg" alt="Quattro atleti del team con pettorale e canotta ufficiale prima della partenza" width="1400" height="1050" loading="lazy">
+                        <span class="gallery-item__caption">Gare</span>
                         <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
                     </button>
-                    <button class="gallery-item media" type="button" data-reveal style="--reveal-delay: .15s" data-placeholder="immagini/banner.jpg">
+                    <button class="gallery-item media" type="button" data-reveal style="--reveal-delay: .15s" data-placeholder="immagini/gallery/gallery-team-02.jpg">
+                        <img src="immagini/gallery/gallery-team-02.jpg" alt="Selfie di gruppo del team con la giacca ufficiale" width="1272" height="1400" loading="lazy">
+                        <span class="gallery-item__caption">Team</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-reveal style="--reveal-delay: .2s" data-placeholder="immagini/sfondo-hero.jpeg">
+                        <img src="immagini/sfondo-hero.jpeg" alt="Tre atleti del team con la felpa ufficiale prima di una gara" width="1440" height="1585" loading="lazy">
+                        <span class="gallery-item__caption">Team</span>
+                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+                    </button>
+                    <button class="gallery-item media" type="button" data-reveal style="--reveal-delay: .25s" data-placeholder="immagini/banner.jpg">
                         <img src="immagini/banner.jpg" alt="Runner in controluce sulla spiaggia al tramonto con il logo del team" width="1441" height="640" loading="lazy">
                         <span class="gallery-item__caption">Alba</span>
-                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
-                    </button>
-                    <button class="gallery-item media" type="button" data-reveal style="--reveal-delay: .2s" data-placeholder="immagini/gallery/gallery-evento-01.jpg">
-                        <img src="immagini/gallery/gallery-evento-01.jpg" alt="Evento del team" width="800" height="800" loading="lazy">
-                        <span class="gallery-item__caption">Eventi</span>
-                        <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
-                    </button>
-                    <button class="gallery-item media" type="button" data-reveal style="--reveal-delay: .25s" data-placeholder="immagini/gallery/gallery-team-01.jpg">
-                        <img src="immagini/gallery/gallery-team-01.jpg" alt="Foto di gruppo del team" width="800" height="800" loading="lazy">
-                        <span class="gallery-item__caption">Team</span>
                         <span class="gallery-item__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
                     </button>
                 </div>
@@ -413,6 +633,40 @@
                         Vedi tutta la galleria
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== DOMANDE FREQUENTI (SEO/GEO) =====================
+             Le stesse domande sono nei dati strutturati FAQPage nel <head>:
+             se modifichi un testo qui, aggiornalo anche lì. -->
+        <section id="faq" class="section" aria-labelledby="faq-title">
+            <div class="container faq">
+                <div class="section-head section-head--center" data-reveal>
+                    <p class="eyebrow">Domande frequenti</p>
+                    <h2 id="faq-title">Tutto quello che vuoi sapere</h2>
+                </div>
+                <div class="faq__list">
+                    <details class="faq__item" data-reveal>
+                        <summary>Chi sono Quelli dell'Alba – Road Runners?</summary>
+                        <p>Quelli dell'Alba – Road Runners è una squadra di running di Martina Franca (TA), in Valle d'Itria. Riunisce runner di ogni età e livello che condividono allenamenti di gruppo, gare su strada, trasferte ed eventi.</p>
+                    </details>
+                    <details class="faq__item" data-reveal style="--reveal-delay: .05s">
+                        <summary>Posso unirmi alla squadra anche se sono un principiante?</summary>
+                        <p>Sì. Nel gruppo c'è chi prepara la maratona e chi ha appena corso il suo primo chilometro. Per chi parte da zero c'è il progetto Da 0 a 10 KM, pensato per arrivare a correre 10 km in continuità.</p>
+                    </details>
+                    <details class="faq__item" data-reveal style="--reveal-delay: .10s">
+                        <summary>Che cos'è la Vignaletto Challenge?</summary>
+                        <p>È la gara podistica organizzata da Quelli dell'Alba Road Runners. L'edizione 2026, Erboristeria Linneo Vignaletto Challenge, si è corsa il 1° maggio 2026 alle 9:30 in C.da Pergolo a Martina Franca, con una gara competitiva e non competitiva da 9,8 km e la Vignaletto Family da 5 km.</p>
+                    </details>
+                    <details class="faq__item" data-reveal style="--reveal-delay: .15s">
+                        <summary>Che cos'è il progetto Da 0 a 10 KM?</summary>
+                        <p>È un percorso per chi vuole iniziare a correre, migliorarsi e stare bene, con l'obiettivo di correre 10 km in continuità insieme a un gruppo che condivide fatica, sorrisi e soddisfazioni.</p>
+                    </details>
+                    <details class="faq__item" data-reveal style="--reveal-delay: .20s">
+                        <summary>Dove si trova la squadra e come posso contattarvi?</summary>
+                        <p>La sede è in Via Orazio Flacco 65, 74015 Martina Franca (TA). Puoi scrivere a quellidellalba@gmail.com, chiamare o scrivere su WhatsApp al +39 393 505 1979, oppure usare il modulo Contattaci del sito.</p>
+                    </details>
                 </div>
             </div>
         </section>
@@ -429,73 +683,62 @@
 
                     <ul class="contact-cards">
                         <li>
-                            <a class="contact-card" href="mailto:info@quellidellalba.com">
+                            <a class="contact-card" href="mailto:quellidellalba@gmail.com">
                                 <span class="contact-card__icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
                                 </span>
                                 <span>
                                     <span class="contact-card__label">Email</span>
-                                    <span class="contact-card__value">info@quellidellalba.com</span>
+                                    <span class="contact-card__value">quellidellalba@gmail.com</span>
                                 </span>
                             </a>
                         </li>
                         <li>
-                            <!-- Sostituire href con il numero reale, es. tel:+39XXXXXXXXXX -->
-                            <a class="contact-card" href="tel:+39">
+                            <a class="contact-card" href="tel:+393935051979">
                                 <span class="contact-card__icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>
                                 </span>
                                 <span>
                                     <span class="contact-card__label">Telefono</span>
-                                    <span class="contact-card__value">+39 XXX XXX XXXX</span>
+                                    <span class="contact-card__value">+39 393 505 1979</span>
                                 </span>
                             </a>
                         </li>
                         <li class="contact-card--wide">
-                            <div class="contact-card">
+                            <a class="contact-card" href="https://www.google.com/maps/search/?api=1&amp;query=Via+Orazio+Flacco+65,+74015+Martina+Franca+TA" target="_blank" rel="noopener">
                                 <span class="contact-card__icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
                                 </span>
                                 <span>
-                                    <span class="contact-card__label">Location</span>
-                                    <span class="contact-card__value">[INSERIRE INDIRIZZO]</span>
+                                    <span class="contact-card__label">Dove siamo</span>
+                                    <span class="contact-card__value">Via Orazio Flacco 65<br>74015 Martina Franca (TA)</span>
                                 </span>
-                            </div>
+                            </a>
                         </li>
                         <li class="contact-card--wide">
-                            <div class="contact-card">
+                            <a class="contact-card" href="https://wa.me/393935051979" target="_blank" rel="noopener">
                                 <span class="contact-card__icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-2-1.2 7.4 7.4 0 01-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c.6.3 1.1.4 1.5.5a3.6 3.6 0 001.7.1 2.8 2.8 0 001.8-1.3 2.3 2.3 0 00.2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
                                 </span>
                                 <span>
-                                    <span class="contact-card__label">Social</span>
-                                    <span class="socials">
-                                        <!-- Sostituire href con gli URL reali -->
-                                        <a class="social-link" href="#" target="_blank" rel="noopener" aria-label="Instagram di Quelli dell'Alba">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-                                            Instagram
-                                        </a>
-                                        <a class="social-link" href="#" target="_blank" rel="noopener" aria-label="Facebook di Quelli dell'Alba">
-                                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 00-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg>
-                                            Facebook
-                                        </a>
-                                    </span>
+                                    <span class="contact-card__label">WhatsApp</span>
+                                    <span class="contact-card__value">Scrivici in chat</span>
                                 </span>
-                            </div>
+                            </a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="map" data-reveal="right">
                     <!--
-                        GOOGLE MAPS
-                        1. Apri Google Maps e cerca l'indirizzo del team
-                        2. Condividi → Incorpora una mappa → Copia HTML
-                        3. Incolla qui sotto SOLO il valore dell'attributo src
-                           al posto di [INSERIRE GOOGLE MAPS URL]
+                        GOOGLE MAPS – Via Orazio Flacco 65, 74015 Martina Franca (TA)
+                        Per cambiare indirizzo basta modificare il testo dopo "q=" nell'URL.
+                        La mappa usa cookie di Google: viene caricata (data-src → src) da
+                        script.js SOLO dopo il consenso ai cookie.
                     -->
                     <iframe
-                        src="[INSERIRE GOOGLE MAPS URL]"
+                        data-src="https://www.google.com/maps?q=Via+Orazio+Flacco+65,+74015+Martina+Franca+TA&amp;hl=it&amp;z=16&amp;output=embed"
+                        data-maps-link="https://www.google.com/maps/search/?api=1&amp;query=Via+Orazio+Flacco+65,+74015+Martina+Franca+TA"
                         title="Mappa: dove trovare Quelli dell'Alba – Road Runners"
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
@@ -516,14 +759,20 @@
 
                 <div class="form-card" data-reveal="zoom">
                     <!--
-                        COLLEGAMENTO BACKEND
-                        - PHP:        action="invia.php" method="POST"
-                        - Formspree:  action="https://formspree.io/f/[ID]" method="POST"
-                        - Netlify:    aggiungere gli attributi  data-netlify="true" name="contatti"
-                        - API custom: impostare data-endpoint="https://..." (vedi script.js)
-                        Finché action/data-endpoint non sono impostati, script.js simula l'invio.
+                        INVIO DIRETTO ALLA MAIL DELLA SQUADRA (FormSubmit.co, gratuito, senza server)
+                        - Le richieste arrivano già compilate a quellidellalba@gmail.com
+                        - ATTIVAZIONE: al PRIMO invio FormSubmit manda a quellidellalba@gmail.com
+                          una mail "Confirm your email": cliccare il link UNA volta sola.
+                        - Per cambiare indirizzo: modificare data-endpoint e data-mailto qui sotto.
                     -->
-                    <form id="contactForm" action="#" method="POST" novalidate data-endpoint="">
+                    <form id="contactForm" action="https://formsubmit.co/quellidellalba@gmail.com" method="POST" novalidate
+                          data-endpoint="https://formsubmit.co/ajax/quellidellalba@gmail.com"
+                          data-mailto="quellidellalba@gmail.com">
+                        <!-- Impostazioni FormSubmit -->
+                        <input type="hidden" name="_subject" value="Nuova richiesta dal sito – Quelli dell'Alba">
+                        <input type="hidden" name="_template" value="table">
+                        <!-- Campo anti-spam: deve restare vuoto e nascosto -->
+                        <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
                         <div class="form-grid">
                             <div class="form-field">
                                 <label for="nome">Nome <span class="req" aria-hidden="true">*</span></label>
@@ -553,7 +802,7 @@
                             <div class="form-field form-field--full">
                                 <div class="form-check">
                                     <input type="checkbox" id="privacy" name="privacy" required aria-describedby="privacy-error">
-                                    <label for="privacy">Acconsento al trattamento dei dati personali. <a href="#" data-link="privacy-policy">Leggi la Privacy Policy</a></label>
+                                    <label for="privacy">Acconsento al trattamento dei dati personali. <a href="privacy-policy.html" target="_blank">Leggi la Privacy Policy</a></label>
                                 </div>
                                 <span class="form-error" id="privacy-error" aria-live="polite"></span>
                             </div>
@@ -580,23 +829,17 @@
 
     <!-- ===================== FOOTER ===================== -->
     <footer class="site-footer">
-        <div class="container footer__grid">
-            <div>
-                <a class="footer__brand" href="index.html">
-                    <img src="immagini/logo.png" alt="" width="76" height="76" loading="lazy">
-                    <span>
-                        <strong>Quelli dell'Alba</strong>
-                        <span>ROAD RUNNERS</span>
-                    </span>
-                </a>
-                <p class="footer__desc">
-                    Squadra di running nata dalla passione per la strada e dalla voglia di condividere ogni chilometro, dall'alba al traguardo.
-                </p>
-            </div>
+        <div class="container footer__top">
+            <a class="footer__brand" href="index.html" aria-label="Quelli dell'Alba – Road Runners, home">
+                <img src="immagini/logo-small.png" alt="" width="48" height="48" loading="lazy">
+                <span>
+                    <strong>Quelli dell'Alba</strong>
+                    <small>ROAD RUNNERS</small>
+                </span>
+            </a>
 
-            <nav aria-label="Link rapidi">
-                <h2 class="footer__title">Link rapidi</h2>
-                <ul class="footer__links">
+            <nav class="footer__nav" aria-label="Link rapidi">
+                <ul>
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#chi-siamo">Chi siamo</a></li>
                     <li><a href="#vignaletto">Gare</a></li>
@@ -605,30 +848,28 @@
                 </ul>
             </nav>
 
-            <div>
-                <h2 class="footer__title">Contatti</h2>
-                <ul class="footer__links">
-                    <li><a href="mailto:info@quellidellalba.com">info@quellidellalba.com</a></li>
-                    <li><a href="tel:+39">+39 XXX XXX XXXX</a></li>
-                </ul>
-                <div class="footer__social">
-                    <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-                    </a>
-                    <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 00-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg>
-                    </a>
-                </div>
+            <div class="footer__social">
+                <a href="https://www.instagram.com/quelli_dell_alba/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+                <!-- [INSERIRE URL FACEBOOK] al posto di # -->
+                <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 00-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg></a>
+                <a href="https://wa.me/393935051979" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-2-1.2 7.4 7.4 0 01-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c.6.3 1.1.4 1.5.5a3.6 3.6 0 001.7.1 2.8 2.8 0 001.8-1.3 2.3 2.3 0 00.2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+                <a href="tel:+393935051979" aria-label="Telefono +39 393 505 1979"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></a>
+                <a href="mailto:quellidellalba@gmail.com" aria-label="Email quellidellalba@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
             </div>
         </div>
 
         <div class="container footer__bottom">
-            <p>© <span data-year>2026</span> Quelli dell'Alba – Road Runners</p>
+            <p>© <span data-year>2026</span> Quelli dell'Alba – Road Runners · Via Orazio Flacco 65, Martina Franca (TA)</p>
             <div class="footer__legal">
-                <a href="#" data-link="privacy-policy">Privacy Policy</a>
-                <a href="#" data-link="cookie-policy">Cookie Policy</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="cookie-policy.html">Cookie Policy</a>
+                <button type="button" data-cookie-settings>Preferenze cookie</button>
             </div>
         </div>
+
+        <p class="footer__credit">
+            Web by <a href="https://www.instagram.com/_matteomarino/" target="_blank" rel="noopener" aria-label="Matteo Marino su Instagram (@_matteomarino)">Matteo Marino</a>
+        </p>
     </footer>
 
     <a class="back-to-top" href="#main" aria-label="Torna su">
