@@ -387,12 +387,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const emptyMsg = document.querySelector('.gallery-empty');
         const status = document.getElementById('filter-status');
 
-        // Numero di foto per categoria accanto a ogni filtro
+        // Numero di foto per categoria accanto a ogni filtro;
+        // i filtri senza foto vengono nascosti (ricompaiono appena se ne aggiunge una)
         document.querySelectorAll('[data-count-for]').forEach((badge) => {
             const cat = badge.dataset.countFor;
-            badge.textContent = cat === 'all'
+            const count = cat === 'all'
                 ? items.length
                 : items.filter((i) => i.dataset.category === cat).length;
+            badge.textContent = count;
+            if (cat !== 'all' && count === 0) badge.closest('.filter-btn').hidden = true;
         });
 
         // Filtro iniziale da URL (es. galleria.html#gare)
@@ -796,7 +799,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const today = new Date();
         const dayStart = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
         const days = Math.round((dayStart(start) - dayStart(today)) / 86400000);
-        if (days < 0) return; // gara passata: il badge resta nascosto
+        if (days < 0) {
+            // gara passata: badge "Edizione conclusa" (se previsto), altrimenti nascosto
+            if (el.dataset.pastText) {
+                el.textContent = `✓ ${el.dataset.pastText}`;
+                el.classList.add('is-past');
+                el.hidden = false;
+            }
+            return;
+        }
         el.innerHTML = days === 0
             ? '🏁 <span>Si corre <b>oggi</b>!</span>'
             : `<strong>${days}</strong><span>${days === 1 ? 'giorno' : 'giorni'} alla partenza</span>`;

@@ -3131,6 +3131,278 @@ a.contact-card:hover,
 }
 
 /* --------------------------------------------------------------------------
+   PAGINE GARA (vignaletto-challenge.html, corri-a-san-vito.html, ...)
+   -------------------------------------------------------------------------- */
+.race-hero {
+    --race-accent: var(--color-secondary);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: calc(var(--nav-height) + 2.5rem) 0 clamp(2.75rem, 5vw, 4.5rem);
+    color: #fff;
+    background: var(--gradient-dawn);
+}
+
+/* locandina ingrandita e sfocata come sfondo */
+.race-hero__bg {
+    position: absolute;
+    inset: -60px;
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+    filter: blur(30px) saturate(1.25);
+    transform: scale(1.1);
+}
+
+.race-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(12, 6, 28, 0.78) 0%, rgba(12, 6, 28, 0.55) 55%, rgba(12, 6, 28, 0.82) 100%);
+}
+
+.race-hero--vignaletto { --race-accent: #f2b53c; }
+.race-hero--san-vito { --race-accent: #ffd23f; }
+.race-hero--la-dieci { --race-accent: #ff9a52; }
+
+.race-hero--da-zero-a-dieci {
+    --race-accent: #7fe3cf;
+    background: linear-gradient(150deg, #0a4040 0%, #066e6e 55%, #13a38a 100%);
+}
+
+.race-hero--da-zero-a-dieci::after {
+    background: radial-gradient(circle at 90% 10%, rgba(255, 122, 89, 0.3), transparent 45%);
+}
+
+.race-hero .breadcrumb a,
+.race-hero .breadcrumb span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.race-hero .eyebrow {
+    color: var(--race-accent);
+}
+
+.race-hero h1 {
+    color: #fff;
+    font-size: clamp(2.4rem, 1.3rem + 5vw, 5rem);
+    max-width: 16ch;
+}
+
+.race-hero__tagline {
+    margin-top: 0.6rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: var(--fs-h3);
+    color: var(--race-accent);
+}
+
+.race-hero__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+}
+
+.race-hero__facts li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+}
+
+.race-hero__facts svg {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: var(--race-accent);
+}
+
+.race-hero__actions {
+    margin-top: 1.5rem;
+}
+
+/* badge "Edizione conclusa" quando la data è passata */
+.race__countdown.is-past {
+    padding: 0.45rem 1rem;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    box-shadow: none;
+}
+
+.race-map {
+    background: var(--color-surface);
+}
+
+/* Le altre gare */
+.other-races {
+    background: var(--color-cream-dark);
+}
+
+.race-links {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 1000px;
+    margin-inline: auto;
+}
+
+.race-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--t-med), box-shadow var(--t-med);
+}
+
+.race-link:hover,
+.race-link:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.race-link__thumb {
+    display: grid;
+    place-items: center;
+    flex: 0 0 76px;
+    aspect-ratio: 3 / 4;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--color-background);
+}
+
+.race-link__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.race-link__thumb .race-link__logo {
+    object-fit: contain;
+    padding: 6px;
+}
+
+.race-link__body strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    line-height: 1.15;
+    color: var(--color-primary);
+}
+
+.race-link__body span {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+    .race-links {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Footer: link a tutte le gare */
+.footer__races {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem 1.25rem;
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: var(--fs-sm);
+}
+
+.footer__races span {
+    flex-basis: 100%;
+    text-align: center;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.footer__races a {
+    transition: color var(--t-fast);
+}
+
+.footer__races a:hover {
+    color: var(--color-secondary);
+}
+
+.footer__races + .footer__bottom {
+    margin-top: 1.25rem;
+}
+
+@media (min-width: 768px) {
+    .footer__races {
+        justify-content: flex-start;
+    }
+
+    .footer__races span {
+        flex-basis: auto;
+        margin-right: 0.5rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   PAGINA 404
+   -------------------------------------------------------------------------- */
+.notfound {
+    display: flex;
+    align-items: center;
+    min-height: 82vh;
+    min-height: 82svh;
+    text-align: center;
+}
+
+.notfound__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.notfound__code {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(6rem, 4rem + 14vw, 12rem);
+    line-height: 0.9;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 210, 191, 0.7);
+}
+
+.notfound p:not(.notfound__code) {
+    max-width: 480px;
+    margin-top: 0;
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: var(--fs-lg);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.notfound__actions {
+    justify-content: center;
+    margin-top: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
    COOKIE BANNER (creato da script.js al primo accesso)
    -------------------------------------------------------------------------- */
 .cookie-banner {

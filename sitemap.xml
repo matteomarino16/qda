@@ -3,23 +3,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
-        <loc>https://www.quellidellalba.com/</loc>
+        <loc>https://www.quellidellalba.it/</loc>
         <lastmod>2026-10-03</lastmod>
-        <changefreq>monthly</changefreq>
+        <changefreq>weekly</changefreq>
         <priority>1.0</priority>
-        <image:image><image:loc>https://www.quellidellalba.com/immagini/og-image.jpg</image:loc></image:image>
-        <image:image><image:loc>https://www.quellidellalba.com/immagini/gare/vignaletto-locandina-2026.jpg</image:loc></image:image>
-        <image:image><image:loc>https://www.quellidellalba.com/immagini/gare/corri-a-san-vito-locandina-2026.jpg</image:loc></image:image>
-        <image:image><image:loc>https://www.quellidellalba.com/immagini/gare/la-10-di-martina-locandina-2026.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.it/immagini/og-image.jpg</image:loc></image:image>
     </url>
     <url>
-        <loc>https://www.quellidellalba.com/galleria.html</loc>
+        <loc>https://www.quellidellalba.it/corri-a-san-vito.html</loc>
+        <lastmod>2026-10-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image><image:loc>https://www.quellidellalba.it/immagini/gare/corri-a-san-vito-locandina-2026.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.it/immagini/gare/og-corri-a-san-vito.jpg</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://www.quellidellalba.it/vignaletto-challenge.html</loc>
+        <lastmod>2026-10-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+        <image:image><image:loc>https://www.quellidellalba.it/immagini/gare/vignaletto-locandina-2026.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.it/immagini/gare/og-vignaletto-challenge.jpg</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://www.quellidellalba.it/la-10-di-martina.html</loc>
+        <lastmod>2026-10-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+        <image:image><image:loc>https://www.quellidellalba.it/immagini/gare/la-10-di-martina-locandina-2026.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.it/immagini/gare/og-la-10-di-martina.jpg</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://www.quellidellalba.it/da-0-a-10-km.html</loc>
         <lastmod>2026-10-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <image:image><image:loc>https://www.quellidellalba.com/immagini/gallery/gallery-team-01.jpg</image:loc></image:image>
-        <image:image><image:loc>https://www.quellidellalba.com/immagini/gallery/gallery-gara-01.jpg</image:loc></image:image>
-        <image:image><image:loc>https://www.quellidellalba.com/immagini/gallery/gallery-gara-02.jpg</image:loc></image:image>
-        <image:image><image:loc>https://www.quellidellalba.com/immagini/gallery/gallery-team-02.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.it/immagini/gare/og-da-0-a-10-km.jpg</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://www.quellidellalba.it/galleria.html</loc>
+        <lastmod>2026-10-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://www.quellidellalba.it/immagini/gallery/gallery-team-01.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.it/immagini/gallery/gallery-gara-01.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.it/immagini/gallery/gallery-gara-02.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.it/immagini/gallery/gallery-team-02.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.it/immagini/gallery/gallery-evento-virtual-run-natale.jpg</image:loc></image:image>
     </url>
 </urlset>
