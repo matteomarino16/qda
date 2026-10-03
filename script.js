@@ -44,77 +44,147 @@ document.addEventListener('DOMContentLoaded', () => {
        1b. LOGO VOLANTE (solo home)
        Il logo parte grande sopra .hero__visual e, mentre si scorre, viene
        traslato e scalato fino alla posizione di .nav__logo nell'header.
-       L'animazione segue lo scroll: tornando su il logo torna grande.
+
+       Per la massima fluidità (soprattutto su mobile) il percorso viene
+       calcolato UNA volta e trasformato in un'animazione CSS legata allo
+       scroll (animation-timeline: scroll()): la esegue la GPU, sincronizzata
+       con il dito, senza JavaScript durante lo scroll.
+       Fallback per i browser senza supporto: aggiornamento con
+       requestAnimationFrame (solo transform/opacity).
        ---------------------------------------------------------------------- */
     const flyLogo = document.querySelector('.flying-logo');
     const heroSlot = document.querySelector('.hero__visual');
     const navSlot = document.querySelector('.nav__logo');
     const heroSection = document.getElementById('hero');
 
-    if (flyLogo && heroSlot && navSlot && heroSection) {
-        let startSize = 0;
-        let docked = false;
-        let rafId = null;
-        let settleUntil = 0;
+    if (flyLogo && heroSlot && navSlot && heroSection && header) {
+        const STEPS = 30;               // punti del percorso (più sono, più è morbido)
+        const DOCK_RATIO = 0.5;         // arriva nell'header dopo metà hero
+        const supportsTimeline = window.CSS && CSS.supports('animation-timeline: scroll()')
+            && CSS.supports('animation-range: 0px 100px');
 
         const lerp = (a, b, t) => a + (b - a) * t;
         const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+        const styleTag = document.createElement('style');
+        document.head.appendChild(styleTag);
 
-        // Dimensione "grande" = dimensione del segnaposto nella hero
-        const measure = () => {
-            startSize = heroSlot.offsetWidth;
-            flyLogo.style.setProperty('--fly-size', `${startSize || navSlot.offsetWidth}px`);
+        let geo = null;     // geometria misurata
+        let docked = false;
+
+        // Posizione del logo nell'header nello stato "scrollato" (header più basso)
+        const measureDockedNav = () => {
+            const wasScrolled = header.classList.contains('is-scrolled');
+            header.style.transition = 'none';
+            header.classList.add('is-scrolled');
+            const r = navSlot.getBoundingClientRect();
+            header.classList.toggle('is-scrolled', wasScrolled);
+            void header.offsetHeight;   // applica subito lo stato originale
+            header.style.transition = '';
+            return r;
         };
 
-        const update = () => {
-            const nav = navSlot.getBoundingClientRect();
+        const measure = () => {
+            const size = heroSlot.offsetWidth;
+            const nav = measureDockedNav();
+            const slot = heroSlot.getBoundingClientRect();
+            geo = {
+                size,
+                distance: Math.max(1, Math.round(heroSection.offsetHeight * DOCK_RATIO)),
+                slotX: slot.left,
+                slotDocY: slot.top + window.scrollY,
+                navX: nav.left,
+                navY: nav.top,
+                navScale: size ? nav.width / size : 1
+            };
+            flyLogo.style.setProperty('--fly-size', `${size || nav.width}px`);
+        };
 
-            // Segnaposto nascosto (es. smartphone in orizzontale): logo subito nell'header
-            if (!startSize) {
-                flyLogo.style.setProperty('--fly-size', `${nav.width}px`);
-                flyLogo.style.setProperty('--p', 1);
-                flyLogo.style.transform = `translate3d(${nav.left}px, ${nav.top}px, 0)`;
+        // Transform del logo per un avanzamento t (0 → 1) dello scroll
+        const frameAt = (t) => {
+            const e = easeInOut(t);
+            const slotY = geo.slotDocY - t * geo.distance;   // il segnaposto sale con la pagina
+            const x = lerp(geo.slotX, geo.navX, e);
+            const y = lerp(slotY, geo.navY, e);
+            const sc = lerp(1, geo.navScale, e);
+            return `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) scale(${sc.toFixed(4)})`;
+        };
+
+        const buildTimeline = () => {
+            if (!geo.size) {
+                // Segnaposto nascosto (es. smartphone in orizzontale): logo fisso nell'header
+                styleTag.textContent = '';
+                flyLogo.classList.remove('is-timeline');
+                flyLogo.style.transform = `translate3d(${geo.navX}px, ${geo.navY}px, 0) scale(1)`;
+                flyLogo.style.setProperty('--rings', 0);
                 return;
             }
+            let frames = '';
+            for (let i = 0; i <= STEPS; i++) {
+                const t = i / STEPS;
+                frames += `${(t * 100).toFixed(2)}% { transform: ${frameAt(t)}; }\n`;
+            }
+            const range = `animation-range: 0px ${geo.distance}px;`;
+            styleTag.textContent = `
+                @keyframes qdaFlyPath { ${frames} }
+                @keyframes qdaFlyRings { 0% { opacity: 1; } 60%, 100% { opacity: 0; } }
+                .flying-logo.is-timeline {
+                    animation: qdaFlyPath linear both;
+                    animation-timeline: scroll(root block);
+                    ${range}
+                }
+                .flying-logo.is-timeline::before {
+                    animation: qdaFlyRings linear both;
+                    animation-timeline: scroll(root block);
+                    ${range}
+                }`;
+            flyLogo.style.transform = '';
+            flyLogo.classList.add('is-timeline');
+        };
 
-            const hero = heroSlot.getBoundingClientRect();
-            // Il logo arriva nell'header dopo circa metà dell'altezza della hero
-            const distance = Math.max(1, heroSection.offsetHeight * 0.5);
-            const raw = Math.min(Math.max(window.scrollY / distance, 0), 1);
-            const p = easeInOut(raw);
+        // Fallback JavaScript (browser senza scroll-driven animations)
+        let rafId = null;
+        const updateFallback = () => {
+            rafId = null;
+            if (!geo.size) return;
+            const t = Math.min(Math.max(window.scrollY / geo.distance, 0), 1);
+            flyLogo.style.transform = frameAt(t);
+            flyLogo.style.setProperty('--rings', Math.max(0, 1 - t / 0.6).toFixed(3));
+        };
 
-            const x = lerp(hero.left, nav.left, p);
-            const y = lerp(hero.top, nav.top, p);
-            const scale = lerp(1, nav.width / startSize, p);
-
-            flyLogo.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
-            flyLogo.style.setProperty('--p', p.toFixed(3));
-
-            // Piccolo rimbalzo all'arrivo nell'header
-            const isDocked = raw >= 1;
+        // Stato "agganciato": ferma la fluttuazione e fa un piccolo rimbalzo
+        const updateDocked = () => {
+            const isDocked = geo.size === 0 || window.scrollY >= geo.distance;
             if (isDocked !== docked) {
                 docked = isDocked;
-                flyLogo.classList.toggle('is-docked', docked && !prefersReducedMotion);
+                flyLogo.classList.toggle('is-docked', docked);
             }
         };
 
-        // Durante lo scroll (e per un attimo dopo, mentre l'header cambia
-        // padding con la sua transizione) aggiorna a ogni frame
-        const loop = () => {
-            update();
-            rafId = performance.now() < settleUntil ? requestAnimationFrame(loop) : null;
+        const setup = () => {
+            measure();
+            if (supportsTimeline) buildTimeline();
+            else updateFallback();
+            updateDocked();
         };
 
-        const kick = () => {
-            settleUntil = performance.now() + 600;
-            if (!rafId) rafId = requestAnimationFrame(loop);
-        };
+        setup();
+        window.addEventListener('scroll', () => {
+            updateDocked();
+            if (!supportsTimeline && !rafId) rafId = requestAnimationFrame(updateFallback);
+        }, { passive: true });
 
-        measure();
-        update();
-        window.addEventListener('scroll', kick, { passive: true });
-        window.addEventListener('resize', () => { measure(); kick(); });
-        window.addEventListener('load', () => { measure(); kick(); });
+        // Ricalcolo solo quando cambia davvero la larghezza (rotazione, finestra):
+        // su mobile la barra degli indirizzi che compare/scompare cambia solo l'altezza
+        let lastWidth = window.innerWidth;
+        let resizeTimer = null;
+        window.addEventListener('resize', () => {
+            if (window.innerWidth === lastWidth) return;
+            lastWidth = window.innerWidth;
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(setup, 120);
+        });
+        window.addEventListener('load', setup);
+        document.fonts?.ready.then(setup);
     }
 
 
@@ -524,6 +594,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             iframe.hidden = true;
+            iframe.removeAttribute('src'); // consenso revocato: la mappa viene scollegata
             if (!placeholder) {
                 placeholder = document.createElement('div');
                 placeholder.className = 'map__placeholder';
@@ -712,6 +783,20 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ----------------------------------------------------------------------
        12. PICCOLE INTERAZIONI UI
        ---------------------------------------------------------------------- */
+
+    // Conto alla rovescia delle gare in arrivo ([data-countdown] con data ISO)
+    document.querySelectorAll('[data-countdown]').forEach((el) => {
+        const start = new Date(el.dataset.countdown);
+        if (Number.isNaN(start.getTime())) return;
+        const today = new Date();
+        const dayStart = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+        const days = Math.round((dayStart(start) - dayStart(today)) / 86400000);
+        if (days < 0) return; // gara passata: il badge resta nascosto
+        el.innerHTML = days === 0
+            ? '🏁 <span>Si corre <b>oggi</b>!</span>'
+            : `<strong>${days}</strong><span>${days === 1 ? 'giorno' : 'giorni'} alla partenza</span>`;
+        el.hidden = false;
+    });
 
     // Anno corrente nel footer
     document.querySelectorAll('[data-year]').forEach((el) => {

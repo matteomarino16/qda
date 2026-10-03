@@ -4,15 +4,17 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://www.quellidellalba.com/</loc>
-        <lastmod>2026-10-02</lastmod>
+        <lastmod>2026-10-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
         <image:image><image:loc>https://www.quellidellalba.com/immagini/og-image.jpg</image:loc></image:image>
         <image:image><image:loc>https://www.quellidellalba.com/immagini/gare/vignaletto-locandina-2026.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.com/immagini/gare/corri-a-san-vito-locandina-2026.jpg</image:loc></image:image>
+        <image:image><image:loc>https://www.quellidellalba.com/immagini/gare/la-10-di-martina-locandina-2026.jpg</image:loc></image:image>
     </url>
     <url>
         <loc>https://www.quellidellalba.com/galleria.html</loc>
-        <lastmod>2026-10-02</lastmod>
+        <lastmod>2026-10-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <image:image><image:loc>https://www.quellidellalba.com/immagini/gallery/gallery-team-01.jpg</image:loc></image:image>
