@@ -102,9 +102,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Transform del logo per un avanzamento t (0 → 1) dello scroll
         const frameAt = (t) => {
             const e = easeInOut(t);
+            // in verticale il logo scorre 1:1 con la pagina (come se fosse attaccato
+            // al dito) e, raggiunta l'altezza dell'header, si ferma lì ("sticky")
             const slotY = geo.slotDocY - t * geo.distance;   // il segnaposto sale con la pagina
             const x = lerp(geo.slotX, geo.navX, e);
-            const y = lerp(slotY, geo.navY, e);
+            const y = Math.max(slotY, geo.navY);
             const sc = lerp(1, geo.navScale, e);
             return `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) scale(${sc.toFixed(4)})`;
         };
@@ -124,6 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 frames += `${(t * 100).toFixed(2)}% { transform: ${frameAt(t)}; }\n`;
             }
             const range = `animation-range: 0px ${geo.distance}px;`;
+            // Posizione di partenza "statica": vale finché il browser non ha attivato
+            // la timeline di scroll (primo fotogramma), poi l'animazione ha la precedenza
+            const tNow = Math.min(Math.max(window.scrollY / geo.distance, 0), 1);
+            flyLogo.style.transform = frameAt(tNow);
             styleTag.textContent = `
                 @keyframes qdaFlyPath { ${frames} }
                 @keyframes qdaFlyRings { 0% { opacity: 1; } 60%, 100% { opacity: 0; } }
@@ -137,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     animation-timeline: scroll(root block);
                     ${range}
                 }`;
-            flyLogo.style.transform = '';
             flyLogo.classList.add('is-timeline');
         };
 
